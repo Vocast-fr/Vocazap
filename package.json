@@ -1,0 +1,48 @@
+{
+  "name": "vocazap",
+  "version": "1.0.0",
+  "description": "Vocast's project to record radios' streams and produce zappings",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs-extra": "^7.0.0",
+    "knex": "^0.15.2",
+    "mysql": "^2.16.0",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.8.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-require-path-exists": "^1.1.9",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-standard": "^1.0.2",
+    "prettier-eslint": "^8.8.2"
+  },
+  "scripts": {
+    "deployExplorer": "node explorer/deploy.js",
+    "test": "mocha './{,!(node_modules)/**}/*.test.js' --exit",
+    "updateRadiosFromPlaylist": "node src/actions/radioListToSQL/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vocast-fr/robozap.git"
+  },
+  "keywords": [
+    "vocast",
+    "radio",
+    "stream",
+    "innovation",
+    "podcast"
+  ],
+  "author": "Vocast",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vocast-fr/robozap/issues"
+  },
+  "homepage": "https://github.com/Vocast-fr/robozap#readme"
+}
