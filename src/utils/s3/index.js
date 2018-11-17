@@ -32,7 +32,7 @@ function uploadLocalFileToS3 (localPath, s3Path, ACL = 'public-read') {
     fs.readFile(localPath, function (err, data) {
       try {
         if (err) {
-          reject(new Error(`Can't read file ${localPath}`))
+          reject(new Error(`Can't read file ${localPath} ${err}`))
         }
 
         uploadToS3(data, s3Path, ACL)
@@ -45,7 +45,26 @@ function uploadLocalFileToS3 (localPath, s3Path, ACL = 'public-read') {
   })
 }
 
+function deleteFilesFromS3 (objectKeys) {
+  return new Promise((resolve, reject) => {
+    const params = {
+      Bucket: AWS_S3_BUCKET,
+      Delete: {
+        Objects: objectKeys.map(Key => ({
+          Key
+        })),
+        Quiet: false
+      }
+    }
+    s3.deleteObjects(params, function (err, data) {
+      if (err) reject(err)
+      else resolve(data)
+    })
+  })
+}
+
 module.exports = {
+  deleteFilesFromS3,
   uploadToS3,
   uploadLocalFileToS3
 }

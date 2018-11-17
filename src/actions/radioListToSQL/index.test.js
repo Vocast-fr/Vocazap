@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 const { assert, expect } = require('chai')
-const main = require('./main.js')
+const main = require('./main')
 
 describe('radioListToSQL', function () {
   // A string explanation of what we're testing

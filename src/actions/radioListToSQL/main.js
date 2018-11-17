@@ -8,7 +8,7 @@ function getRadiosFromList () {
   return jsonFromXmlFile(XML_FILE).then(jsonResult => {
     return jsonResult.playlist.trackList[0].track
       .map(({ title: [name], location: [stream_url] }) => ({
-        name: name.replace(/[`~#$%^*_|\'",<>\{\}\[\]\\\/]/gi, ''),
+        name: name.replace(/[`~#$%^*_|'",<>{}[\]\\/]/gi, ''),
         stream_url
       }))
       .filter(
@@ -19,7 +19,7 @@ function getRadiosFromList () {
   })
 }
 
-module.exports = async function main () {
+async function main () {
   try {
     const radios = await getRadiosFromList().catch(e =>
       console.error(`Error getting radios from list`, e)
@@ -37,3 +37,12 @@ module.exports = async function main () {
     return { e }
   }
 }
+
+main()
+  .then(({ radios }) => {
+    console.log(
+      `Radio listing update done (found ${radios.length} items in playlist)`
+    )
+    process.exit(0)
+  })
+  .catch(e => console.error(`MAIN ERROR`, e))

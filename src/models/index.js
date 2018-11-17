@@ -1,5 +1,7 @@
-const { radios } = require('./radios')
+const radios = require('./radios')
+const streamRecords = require('./streamRecords')
 
 module.exports = {
-  radios
+  ...radios,
+  ...streamRecords
 }
