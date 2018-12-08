@@ -1,20 +1,17 @@
-const AmazonS3URI = require('amazon-s3-uri')
 const { delOldRadioStreams, getOldRadioStreams } = require('../../models')
-const { deleteFilesFromS3 } = require('../../utils')
+const { deleteStorageFile } = require('../../utils')
 
 async function removeOldRadioStreams () {
   try {
     const oldRadiosStreams = await getOldRadioStreams()
 
-    const allObjectsKeys = oldRadiosStreams
-      .map(({ record_url }) => AmazonS3URI(record_url).key)
-      .filter(k => !!k)
+    await Promise.all(
+      oldRadiosStreams.map(({ record_path }) => deleteStorageFile(record_path))
+    )
 
-    if (allObjectsKeys.length) {
-      await deleteFilesFromS3(allObjectsKeys)
-      await delOldRadioStreams()
-    }
-    // console.log('clean ok')
+    await delOldRadioStreams()
+
+    console.log('clean done')
   } catch (err) {
     console.error('Error when trying to remove old radio streams', err)
   }

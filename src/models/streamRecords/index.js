@@ -4,28 +4,32 @@ const moment = require('moment')
 
 const { getKnexConnection } = require('../../utils/mysql')
 
-const { NB_EXP_STREAM_RECORDS_EXP_DAY, TABLE_STREAM_RECORDS } = process.env
+const { NB_DAYS_RECORDS_EXP, TABLE_STREAM_RECORDS, VIEW_RECORDS } = process.env
 
-const getAllStreamRecords = () =>
-  getKnexConnection()
-    .select()
-    .table(TABLE_STREAM_RECORDS)
-
-const delOldRadioStreams = () => oldRadioStreamsOp('del')
-
-const getOldRadioStreams = () => oldRadioStreamsOp('select')
-
-const oldRadioStreamsOp = op => {
+const _oldRadioStreamsOp = op => {
   const knewCon = getKnexConnection()
 
   return knewCon[op]()
     .where(
       'timestamp',
       '<',
-      moment().subtract(NB_EXP_STREAM_RECORDS_EXP_DAY, 'd').format()
+      moment()
+        .subtract(NB_DAYS_RECORDS_EXP, 'd')
+        .format()
     )
     .table(TABLE_STREAM_RECORDS)
 }
+
+const delOldRadioStreams = () => _oldRadioStreamsOp('del')
+
+const getOldRadioStreams = () => _oldRadioStreamsOp('select')
+
+const getRandomRecords = limit =>
+  getKnexConnection()
+    .select()
+    .from(VIEW_RECORDS)
+    .orderByRaw('RAND()')
+    .limit(limit)
 
 const insertRadioStreamsRecords = data =>
   getKnexConnection()
@@ -35,6 +39,6 @@ const insertRadioStreamsRecords = data =>
 module.exports = {
   delOldRadioStreams,
   getOldRadioStreams,
-  getAllStreamRecords,
+  getRandomRecords,
   insertRadioStreamsRecords
 }

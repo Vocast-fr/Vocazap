@@ -7,9 +7,9 @@ const {
   getAllActivatedRadios,
   insertRadioStreamsRecords
 } = require('../../models')
-const { uploadLocalFileToS3 } = require('../../utils')
+const { uploadLocalFileToStorage } = require('../../utils')
 
-const { AWS_S3_PIGES_FOLDER } = process.env
+const { GSTORAGE_PIGES_FOLDER } = process.env
 
 moment.locale('fr')
 
@@ -87,15 +87,17 @@ async function saveRecord ({
   const { id, name } = radio
   if (success) {
     try {
-      recordUrl = await uploadLocalFileToS3(
+      const record_path = `${GSTORAGE_PIGES_FOLDER}/${name}/${day}/${recordFile}`
+      const record_url = await uploadLocalFileToStorage(
         tmpStreamPath,
-        `${AWS_S3_PIGES_FOLDER}/${name}/${day}/${recordFile}`
+        record_path
       )
 
       streamRecords.push({
         radio_id: id,
         timestamp,
-        record_url: recordUrl
+        record_url,
+        record_path
       })
     } catch (e) {
       error = e
@@ -126,7 +128,7 @@ async function saveRecord ({
 module.exports = async (deadline = 60000 * 60) => {
   // load during one hour by default
 
-  console.log(`${new Date().toJSON()} Unit process start`)
+  console.log(`${new Date().toJSON()} Stream record unit process start`)
 
   const now = moment().tz('Europe/Paris')
   const day = now.format('YY-MM-DD')
@@ -157,5 +159,5 @@ module.exports = async (deadline = 60000 * 60) => {
     }
   }
 
-  console.log(`${new Date().toJSON()} Unit process done`)
+  console.log(`${new Date().toJSON()} Stream  record unit process done`)
 }
