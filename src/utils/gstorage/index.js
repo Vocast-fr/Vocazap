@@ -27,7 +27,15 @@ async function deleteStorageFile (filename) {
   // console.log(`gs://${GSTORAGE_BUCKET}/${filename} deleted.`)
 }
 
+async function downloadStorageFile (srcFilename, destination) {
+  await storage
+    .bucket(GSTORAGE_BUCKET)
+    .file(srcFilename)
+    .download({ destination })
+}
+
 module.exports = {
   uploadLocalFileToStorage,
-  deleteStorageFile
+  deleteStorageFile,
+  downloadStorageFile
 }

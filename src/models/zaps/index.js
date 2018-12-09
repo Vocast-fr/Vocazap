@@ -5,7 +5,7 @@ const moment = require('moment')
 const { getKnexConnection } = require('../../utils/mysql')
 
 const {
-  NB_DAYS_RECORDS_EXP,
+  NB_DAYS_ZAPS_EXP,
   TABLE_ZAPS,
   TABLE_ZAPS_RADIOS,
   VIEW_ZAPS
@@ -19,15 +19,15 @@ const _oldZapOp = op => {
       'created_date',
       '<',
       moment()
-        .subtract(NB_DAYS_RECORDS_EXP, 'd')
+        .subtract(NB_DAYS_ZAPS_EXP, 'd')
         .format()
     )
     .table(TABLE_ZAPS)
 }
 
-const delOldRadioStreams = () => _oldZapOp('del')
+const delOldZaps = () => _oldZapOp('del')
 
-const getOldRadioStreams = () => _oldZapOp('select')
+const getOldZaps = () => _oldZapOp('select')
 
 const getRandomZaps = limit =>
   getKnexConnection()
@@ -47,8 +47,8 @@ const insertZapRadio = data =>
     .table(TABLE_ZAPS_RADIOS)
 
 module.exports = {
-  delOldRadioStreams,
-  getOldRadioStreams,
+  delOldZaps,
+  getOldZaps,
   getRandomZaps,
   insertZap,
   insertZapRadio
