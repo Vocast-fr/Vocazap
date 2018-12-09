@@ -1,18 +1,16 @@
-const Chance = require('chance')
-const ffmpegPath = '/opt/ffmpeg/ffmpeg-4.1-64bit-static/ffmpeg'  // require('@ffmpeg-installer/ffmpeg').path
+const ffmpegPath = '/opt/ffmpeg/ffmpeg-4.1-64bit-static/ffmpeg' // require('@ffmpeg-installer/ffmpeg').path
 const ffmpeg = require('fluent-ffmpeg')
-const normalize = require('ffmpeg-normalize')
-const os = require('os')
+// const normalize = require('ffmpeg-normalize')
 
-const chance = new Chance()
-
-const TMP_PATH = os.tmpdir()
+const { randomNewTmpFileName } = require('../random')
 
 ffmpeg.setFfmpegPath(ffmpegPath)
 
+const mergeFolder = randomNewTmpFileName('/')
+
 async function ffmpegExtract (input, startSec, durationSec) {
   return new Promise(async (resolve, reject) => {
-    const output = `${TMP_PATH}/${chance.hash()}.mp3`
+    const output = randomNewTmpFileName('mp3')
 
     ffmpeg(input)
       .setStartTime(startSec)
@@ -27,8 +25,42 @@ async function ffmpegExtract (input, startSec, durationSec) {
   })
 }
 
-function normalizeRecommended (inputPath, outputPath) {
-  return normalize({
+function mergeMedias (files) {
+  return new Promise((resolve, reject) => {
+    let ffProcess = ffmpeg()
+
+    files.forEach(f => {
+      ffProcess = ffProcess.addInput(f)
+    })
+
+    const mergedFile = randomNewTmpFileName('mp3')
+
+    ffProcess
+      .mergeToFile(mergedFile, mergeFolder)
+      .on('error', reject)
+      .on('end', function () {
+        resolve(mergedFile)
+      })
+  })
+}
+
+async function normalizeRecommended (
+  inputPath,
+  outputPath = randomNewTmpFileName('mp3')
+) {
+  return new Promise((resolve, reject) => {
+    ffmpeg(inputPath)
+      .withOutputOptions('-af loudnorm=I=-16:TP=-1.5:LRA=11:measured_I=-27.2:measured_TP=-14.4:measured_LRA=0.1:measured_thresh=-37.7:offset=-0.5:linear=true')
+      .output(outputPath)
+      .on('error', reject)
+      .on('end', function () {
+        resolve(outputPath)
+      })
+      .run()
+  })
+
+  /*
+  await normalize({
     input: inputPath,
     output: outputPath,
     loudness: {
@@ -40,9 +72,12 @@ function normalizeRecommended (inputPath, outputPath) {
       }
     }
   })
+  return outputPath
+*/
 }
 
 module.exports = {
   ffmpegExtract,
+  mergeMedias,
   normalizeRecommended
 }

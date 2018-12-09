@@ -10,7 +10,9 @@ const storage = new Storage({
 })
 
 async function uploadLocalFileToStorage (filename, destination) {
-  await storage.bucket(GSTORAGE_BUCKET).upload(filename, { destination })
+  await storage
+    .bucket(GSTORAGE_BUCKET)
+    .upload(filename, { destination, resumable: false })
   const url = `https://storage.googleapis.com/${GSTORAGE_BUCKET}/${destination}`
   //  console.log(`File uploaded to bucket ${GSTORAGE_BUCKET}, available here : ${url}.`)
   return url
