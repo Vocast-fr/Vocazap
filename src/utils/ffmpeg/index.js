@@ -1,16 +1,17 @@
 require('dotenv').config()
 
-// require('@ffmpeg-installer/ffmpeg').path
 const ffmpeg = require('fluent-ffmpeg')
 // const normalize = require('ffmpeg-normalize')
 
 const { randomNewTmpFileName } = require('../random')
 
-const { FFMPEG_PATH } = process.env
+const { FFPROBE_PATH, FFMPEG_PATH } = process.env
 
-if (FFMPEG_PATH) {
-  ffmpeg.setFfmpegPath(FFMPEG_PATH)
-}
+const ffmpegPath = FFMPEG_PATH || require('@ffmpeg-installer/ffmpeg').path
+ffmpeg.setFfmpegPath(ffmpegPath)
+
+const ffprobePath = FFPROBE_PATH || require('@ffprobe-installer/ffprobe').path
+ffmpeg.setFfprobePath(ffprobePath)
 
 const mergeFolder = randomNewTmpFileName('/')
 

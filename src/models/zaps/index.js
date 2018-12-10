@@ -33,6 +33,7 @@ const getRandomZaps = limit =>
   getKnexConnection()
     .select()
     .from(VIEW_ZAPS)
+    .where('position', '=', 1)
     .orderByRaw('RAND()')
     .limit(limit)
 

@@ -19,7 +19,7 @@ function textToVoice (Text, VoiceId = 'Lea', OutputFormat = 'mp3') {
   return new Promise((resolve, reject) => {
     polly.synthesizeSpeech(
       {
-        Text: '<speak><prosody volume="+10dB">' + Text + '</prosody></speak>',
+        Text: '<speak><prosody volume="x-loud">' + Text + '</prosody></speak>',
         TextType: 'ssml',
         OutputFormat,
         VoiceId

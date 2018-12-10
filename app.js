@@ -23,12 +23,12 @@ cron.schedule('0 * * * *', () => {
   )
 })
 
-cron.schedule('15-45/30 * * * *', () => {
-  generateZap().catch(e => console.error(new Date(), ' Main error ', e))
-})
-
 cron.schedule('30 * * * *', () => {
   clean().catch(e => console.error('Main error for clean', e))
+})
+
+cron.schedule('15,45 * * * *', () => {
+  generateZap().catch(e => console.error('Main error for zap generation', e))
 })
 
 const app = express()
