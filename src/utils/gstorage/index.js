@@ -34,7 +34,22 @@ async function downloadStorageFile (srcFilename, destination) {
     .download({ destination })
 }
 
+async function getAllFilesContainingStr (strings) {
+  let [allFiles] = await storage.bucket(GSTORAGE_BUCKET).getFiles()
+
+  allFiles = allFiles
+    .filter(({ name }) => {
+      const fileToReturn = strings.some(s => new RegExp(s).test(name))
+      // console.log({ name, strings, fileToReturn })
+      return fileToReturn
+    })
+    .map(({ name }) => name)
+
+  return allFiles
+}
+
 module.exports = {
+  getAllFilesContainingStr,
   uploadLocalFileToStorage,
   deleteStorageFile,
   downloadStorageFile

@@ -7,9 +7,9 @@ const { getKnexConnection } = require('../../utils/mysql')
 const { NB_DAYS_RECORDS_EXP, TABLE_STREAM_RECORDS, VIEW_RECORDS } = process.env
 
 const _oldRadioStreamsOp = op => {
-  const knewCon = getKnexConnection()
+  const knexCon = getKnexConnection()
 
-  return knewCon[op]()
+  return knexCon[op]()
     .where(
       'timestamp',
       '<',
@@ -21,6 +21,14 @@ const _oldRadioStreamsOp = op => {
 }
 
 const delOldRadioStreams = () => _oldRadioStreamsOp('del')
+
+const deleteSpecificStreamRecord = id => {
+  const knexCon = getKnexConnection()
+
+  return knexCon['delete']()
+    .where('id', '=', id)
+    .table(TABLE_STREAM_RECORDS)
+}
 
 const getOldRadioStreams = () => _oldRadioStreamsOp('select')
 
@@ -37,6 +45,7 @@ const insertRadioStreamsRecords = data =>
     .table(TABLE_STREAM_RECORDS)
 
 module.exports = {
+  deleteSpecificStreamRecord,
   delOldRadioStreams,
   getOldRadioStreams,
   getRandomRecords,

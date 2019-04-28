@@ -36,6 +36,7 @@
     "prettier-eslint": "^8.8.2"
   },
   "scripts": {
+    "lint": "eslint .",
     "start": "node app.js",
     "test": "mocha './{,!(node_modules)/**}/*.test.js' --exit",
     "updateRadiosFromPlaylist": "node src/actions/radioListToSQL/index.js"

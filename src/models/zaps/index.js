@@ -12,9 +12,9 @@ const {
 } = process.env
 
 const _oldZapOp = op => {
-  const knewCon = getKnexConnection()
+  const knexCon = getKnexConnection()
 
-  return knewCon[op]()
+  return knexCon[op]()
     .where(
       'created_date',
       '<',
@@ -26,6 +26,14 @@ const _oldZapOp = op => {
 }
 
 const delOldZaps = () => _oldZapOp('del')
+
+const deleteSpecificZap = id => {
+  const knexCon = getKnexConnection()
+
+  return knexCon['delete']()
+    .where('id', '=', id)
+    .table(TABLE_ZAPS)
+}
 
 const getOldZaps = () => _oldZapOp('select')
 
@@ -48,6 +56,7 @@ const insertZapRadio = data =>
     .table(TABLE_ZAPS_RADIOS)
 
 module.exports = {
+  deleteSpecificZap,
   delOldZaps,
   getOldZaps,
   getRandomZaps,

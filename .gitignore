@@ -65,9 +65,3 @@ dev-setup.sh
 
 # cloud keys 
 **/*.key.json
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
-**/*.zip
