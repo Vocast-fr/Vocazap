@@ -3,7 +3,15 @@ const {
   getAllFilesContainingStr
 } = require('./src/utils/gstorage')
 
-getAllFilesContainingStr(['19-03-31', '19-03-30'])
+getAllFilesContainingStr([
+  '19-02-13',
+  '19-03-26',
+  '19-03-27',
+  '19-03-28',
+  '19-03-29',
+  '19-03-31',
+  '19-03-30'
+])
   .then(async allFileNamesToDelete => {
     console.log(`${allFileNamesToDelete.length} to delete`)
 

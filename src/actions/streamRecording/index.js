@@ -55,7 +55,7 @@ function recordStream ({ radio, day, timestamp, fileDate, deadline }) {
       })
       .on('end', end => {
         stream.close()
-        console.error(`End request for ${recordFile}`)
+        if (!success) console.error(`End request for ${recordFile}`)
       })
       .on('error', e => {
         success = e.timeout
