@@ -65,3 +65,5 @@ dev-setup.sh
 
 # cloud keys 
 **/*.key.json
+credentials.json
+token.json

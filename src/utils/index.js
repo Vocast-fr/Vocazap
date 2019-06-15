@@ -1,3 +1,4 @@
+const drive = require('./drive')
 const ffmpeg = require('./ffmpeg')
 const gstorage = require('./gstorage')
 const mysql = require('./mysql')
@@ -10,6 +11,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 module.exports = {
   sleep,
+  ...drive,
   ...ffmpeg,
   ...gstorage,
   ...mysql,

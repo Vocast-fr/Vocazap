@@ -7,7 +7,10 @@ const {
   getAllActivatedRadios,
   insertRadioStreamsRecords
 } = require('../../models')
-const { uploadLocalFileToStorage } = require('../../utils')
+const {
+  uploadFileAccordingPath
+  // uploadLocalFileToStorage
+} = require('../../utils')
 
 const { GSTORAGE_PIGES_FOLDER } = process.env
 
@@ -88,10 +91,23 @@ async function saveRecord ({
   if (success) {
     try {
       const record_path = `${GSTORAGE_PIGES_FOLDER}/${name}/${day}/${recordFile}`
+
+      const folderPath = `${GSTORAGE_PIGES_FOLDER}/${name}/${day}`
+      const mimeType = 'audio/mpeg'
+      const record_url = await uploadFileAccordingPath(
+        folderPath,
+        recordFile,
+        tmpStreamPath,
+        mimeType
+      )
+
+      /*
+
       const record_url = await uploadLocalFileToStorage(
         tmpStreamPath,
         record_path
       )
+      */
 
       streamRecords.push({
         radio_id: id,
@@ -101,7 +117,7 @@ async function saveRecord ({
       })
     } catch (e) {
       error = e
-      console.error(`Error during S3 upload for file ${recordFile}`, e)
+      console.error(`Error during upload for file ${recordFile}`, e)
     }
   }
   /*
@@ -111,7 +127,7 @@ async function saveRecord ({
   */
 
   if (streamRecords.length) {
-    await insertRadioStreamsRecords(streamRecords)
+    // await insertRadioStreamsRecords(streamRecords)
   }
 
   return {

@@ -18,11 +18,13 @@ process.on('unhandledRejection ', err =>
 
 cron.schedule('0 * * * *', () => {
   // 60000 = 1 min
-  streamRecording().catch(e =>
+  const timelength = 60000 * 60
+  streamRecording(timelength).catch(e =>
     console.error('Main error for stream recording', e)
   )
 })
 
+/*
 cron.schedule('30 * * * *', () => {
   clean().catch(e => console.error('Main error for clean', e))
 })
@@ -47,3 +49,4 @@ const port = process.env.PORT || 3000
 app.listen(port, function () {
   console.log(`Vocazap process launched. Port = ${port}`)
 })
+*/
