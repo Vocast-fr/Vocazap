@@ -15,7 +15,7 @@
     "fs-extra": "^7.0.0",
     "googleapis": "^40.0.0",
     "knex": "^0.15.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.14",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.23",
     "mysql": "^2.16.0",
