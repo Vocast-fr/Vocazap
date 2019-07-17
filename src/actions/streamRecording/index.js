@@ -4,8 +4,8 @@ const os = require('os')
 const request = require('superagent')
 
 const {
-  getAllActivatedRadios,
-  insertRadioStreamsRecords
+  getAllActivatedRadios
+  // insertRadioStreamsRecords
 } = require('../../models')
 const {
   uploadFileAccordingPath
