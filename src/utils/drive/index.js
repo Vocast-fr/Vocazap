@@ -175,7 +175,7 @@ async function uploadFileAccordingPath (
   for (let folder of folders) {
     let q = folderId ? `'${folderId}' in parents and ` : ''
     q +=
-      `trashed=false and name contains '${folder}' ` +
+      `trashed=false and name='${folder}' ` +
       `and mimeType='application/vnd.google-apps.folder'`
 
     const files = await search(q)
