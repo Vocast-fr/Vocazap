@@ -12,7 +12,7 @@ const {
   // uploadLocalFileToStorage
 } = require('../../utils')
 
-const { GSTORAGE_PIGES_FOLDER } = process.env
+const { DRIVE_PIGES_FOLDER } = process.env
 
 moment.locale('fr')
 
@@ -90,9 +90,9 @@ async function saveRecord ({
   const { id, name } = radio
   if (success) {
     try {
-      const record_path = `${GSTORAGE_PIGES_FOLDER}/${name}/${day}/${recordFile}`
+      const record_path = `${DRIVE_PIGES_FOLDER}/${name}/${day}/${recordFile}`
 
-      const folderPath = `${GSTORAGE_PIGES_FOLDER}/${name}/${day}`
+      const folderPath = `${DRIVE_PIGES_FOLDER}/${name}/${day}`
       const mimeType = 'audio/mpeg'
       const record_url = await uploadFileAccordingPath(
         folderPath,
