@@ -7,12 +7,8 @@ const {
   getAllActivatedRadios
   // insertRadioStreamsRecords
 } = require('../../models')
-const {
-  uploadFileAccordingPath
-  // uploadLocalFileToStorage
-} = require('../../utils')
 
-const { DRIVE_PIGES_FOLDER } = process.env
+const { uploadFile } = require('../../interfaces')
 
 moment.locale('fr')
 
@@ -90,24 +86,11 @@ async function saveRecord ({
   const { id, name } = radio
   if (success) {
     try {
-      const record_path = `${DRIVE_PIGES_FOLDER}/${name}/${day}/${recordFile}`
-
-      const folderPath = `${DRIVE_PIGES_FOLDER}/${name}/${day}`
-      const mimeType = 'audio/mpeg'
-      const record_url = await uploadFileAccordingPath(
-        folderPath,
-        recordFile,
+      const { record_url, record_path } = await uploadFile(
+        'record',
         tmpStreamPath,
-        mimeType
+        `${name}/${day}/`
       )
-
-      /*
-
-      const record_url = await uploadLocalFileToStorage(
-        tmpStreamPath,
-        record_path
-      )
-      */
 
       streamRecords.push({
         radio_id: id,

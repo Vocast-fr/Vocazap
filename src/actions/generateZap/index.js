@@ -1,19 +1,21 @@
 const moment = require('moment')
 const fs = require('fs-extra')
 const { uniqBy, take } = require('lodash')
+const request = require('superagent')
 
 const { getRandomRecords, insertZap, insertZapRadio } = require('../../models')
 const {
-  downloadStorageFile,
+  // downloadStorageFile,
   ffmpegExtract,
   mergeMedias,
   // normalizeRecommended,
   randomNewTmpFileName,
-  textToVoice,
-  uploadLocalFileToStorage
+  textToVoice
 } = require('../../utils')
 
-const { GSTORAGE_ZAPS_FOLDER, ZAP_RECORD_SECONDS, ZAP_RECORDS_NB } = process.env
+const { uploadFile } = require('../../interfaces')
+
+const { ZAP_RECORD_SECONDS, ZAP_RECORDS_NB } = process.env
 
 moment.locale('fr')
 
@@ -21,7 +23,7 @@ moment.locale('fr')
  * @description Get a piece of a record
  */
 async function extractRecord (record, position) {
-  const { id: record_id, timestamp, record_path } = record
+  const { id: record_id, timestamp, record_url } = record
 
   // cursor in the record selected randomly from 15 seconds to the 59th minute
   const max = 59 * 60
@@ -30,7 +32,20 @@ async function extractRecord (record, position) {
 
   const hourFilePath = randomNewTmpFileName('mp3')
 
-  await downloadStorageFile(record_path, hourFilePath)
+  // await downloadStorageFile(record_path, hourFilePath)
+
+  const stream = fs.createWriteStream(hourFilePath)
+
+  await request
+    .get(record_url)
+    .on('end', () => {
+      stream.close()
+    })
+    .on('error', e => {
+      console.error(`Error getting ${record_url}`, e)
+      stream.close()
+    })
+    .pipe(stream)
 
   const extractPath = await ffmpegExtract(
     hourFilePath,
@@ -111,10 +126,11 @@ module.exports = async () => {
 
   const normalizedMergedFile = await mergeAllExtracts(records)
 
-  const zap_path = `${GSTORAGE_ZAPS_FOLDER}/${moment().format(
-    'YY-MM-DD'
-  )}/${+new Date()}.mp3`
-  const zap_url = await uploadLocalFileToStorage(normalizedMergedFile, zap_path)
+  const { zap_url, zap_path } = await uploadFile(
+    'zap',
+    normalizedMergedFile,
+    `${moment().format('YY-MM-DD')}/`
+  )
 
   const [zap_id] = await insertZap({ zap_path, zap_url })
   await Promise.all(

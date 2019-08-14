@@ -154,7 +154,9 @@ async function uploadFile (
     fields: 'id'
   })
 
-  const ddlUrl = `https://drive.google.com/open?id=${fileId}`
+  const ddlUrl = `https://drive.google.com/uc?id=${fileId}&authuser=0&export=download`
+  //  `https://drive.google.com/open?id=${fileId}`
+
   return ddlUrl
 }
 
