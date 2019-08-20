@@ -115,13 +115,31 @@ async function createFolder (name, parentFolderId) {
   return folderId
 }
 
+async function deleteFileById (fileId) {
+  const drive = await getDriveSetUp()
+  await drive.files.delete({
+    fileId
+  })
+}
+
+async function deleteFileByName (filename) {
+  const files = await search(filename)
+
+  if (files && files[0] && files[0].id) {
+    console.log(filename, files[0])
+
+    const fileId = files[0].id
+    await deleteFileById(fileId)
+  }
+}
+
 /**
  * filetype : 'audio/mpeg'
  */
 async function uploadFile (
   name,
   sourcePath,
-  mimeType,
+  mimeType = 'audio/mpeg',
   permission = {
     type: 'anyone',
     role: 'reader'
@@ -154,7 +172,9 @@ async function uploadFile (
     fields: 'id'
   })
 
-  const ddlUrl = `https://drive.google.com/uc?id=${fileId}&authuser=0&export=download`
+  let ddlUrl = `https://drive.google.com/uc?id=${fileId}&authuser=0&export=download`
+  if (mimeType === 'audio/mpeg') ddlUrl += '.mp3'
+
   //  `https://drive.google.com/open?id=${fileId}`
 
   return ddlUrl
@@ -170,7 +190,7 @@ async function uploadFileAccordingPath (
     role: 'reader'
   }
 ) {
-  const folders = folderPath.split('/')
+  const folders = folderPath.split('/').filter(f => f)
 
   let folderId
 
@@ -201,6 +221,8 @@ async function uploadFileAccordingPath (
 }
 
 module.exports = {
+  deleteFileById,
+  deleteFileByName,
   getDriveSetUp,
   search,
   listFiles,

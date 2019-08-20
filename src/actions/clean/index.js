@@ -4,18 +4,18 @@ const {
   getOldRadioStreams,
   getOldZaps
 } = require('../../models')
-const { deleteStorageFile } = require('../../utils')
+const { deleteFile } = require('../../interfaces')
 
 async function removeOldRadioStreams () {
   try {
     const oldRadiosStreams = await getOldRadioStreams()
 
-    for (let { id, record_path } of oldRadiosStreams) {
+    for (let { id, record_url } of oldRadiosStreams) {
       try {
-        await deleteStorageFile(record_path)
+        await deleteFile(record_url)
         await deleteSpecificStreamRecord(id)
       } catch (e) {
-        console.error(`Cannot delete stream record ${record_path}`, e)
+        console.error(`Cannot delete stream record ${record_url}`, e)
       }
     }
 
@@ -29,12 +29,12 @@ async function removeOldZaps () {
   try {
     const oldZaps = await getOldZaps()
 
-    for (let { id, zap_path } of oldZaps) {
+    for (let { id, zap_url } of oldZaps) {
       try {
-        await deleteStorageFile(zap_path)
+        await deleteFile(zap_url)
         await deleteSpecificZap(id)
       } catch (e) {
-        console.error(`Cannot delete zap ${zap_path}`, e)
+        console.error(`Cannot delete zap ${zap_url}`, e)
       }
     }
 

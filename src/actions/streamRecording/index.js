@@ -4,8 +4,8 @@ const os = require('os')
 const request = require('superagent')
 
 const {
-  getAllActivatedRadios
-  // insertRadioStreamsRecords
+  getAllActivatedRadios,
+  insertRadioStreamsRecords
 } = require('../../models')
 
 const { uploadFile } = require('../../interfaces')
@@ -80,8 +80,6 @@ async function saveRecord ({
   success,
   error
 }) {
-  let recordUrl, mysqlId
-
   const streamRecords = []
   const { id, name } = radio
   if (success) {
@@ -110,16 +108,16 @@ async function saveRecord ({
   */
 
   if (streamRecords.length) {
-    // await insertRadioStreamsRecords(streamRecords)
+    await insertRadioStreamsRecords(streamRecords)
   }
+
+  console.log({ streamRecords })
 
   return {
     radio,
     recordFile,
     timestamp,
     tmpStreamPath,
-    recordUrl,
-    mysqlId,
     error
   }
 }
@@ -131,7 +129,7 @@ module.exports = async (deadline = 60000 * 60) => {
 
   const now = moment().tz('Europe/Paris')
   const day = now.format('YY-MM-DD')
-  const timestamp = now.format()
+  const timestamp = now.format('YYYY-MM-DD HH:00:00') // now.format()
   const fileDate = now.format('ddd YY-MM-DD HH')
 
   const radios = await getAllActivatedRadios()

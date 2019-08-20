@@ -1,9 +1,9 @@
 const moment = require('moment')
 const fs = require('fs-extra')
 const { uniqBy, take } = require('lodash')
-const request = require('superagent')
 
 const { getRandomRecords, insertZap, insertZapRadio } = require('../../models')
+
 const {
   // downloadStorageFile,
   ffmpegExtract,
@@ -13,9 +13,9 @@ const {
   textToVoice
 } = require('../../utils')
 
-const { uploadFile } = require('../../interfaces')
+const { getFile, uploadFile } = require('../../interfaces')
 
-const { ZAP_RECORD_SECONDS, ZAP_RECORDS_NB } = process.env
+const { APP_ENV, ZAP_RECORD_SECONDS, ZAP_RECORDS_NB } = process.env
 
 moment.locale('fr')
 
@@ -26,26 +26,13 @@ async function extractRecord (record, position) {
   const { id: record_id, timestamp, record_url } = record
 
   // cursor in the record selected randomly from 15 seconds to the 59th minute
-  const max = 59 * 60
-  const min = 15
+  const max = APP_ENV === 'test' ? 5 : 59 * 60
+  const min = APP_ENV === 'test' ? 1 : 15
   const cursorSec = Math.floor(Math.random() * (max - min + 1)) + min
 
   const hourFilePath = randomNewTmpFileName('mp3')
 
-  // await downloadStorageFile(record_path, hourFilePath)
-
-  const stream = fs.createWriteStream(hourFilePath)
-
-  await request
-    .get(record_url)
-    .on('end', () => {
-      stream.close()
-    })
-    .on('error', e => {
-      console.error(`Error getting ${record_url}`, e)
-      stream.close()
-    })
-    .pipe(stream)
+  await getFile(hourFilePath, record_url)
 
   const extractPath = await ffmpegExtract(
     hourFilePath,
@@ -137,7 +124,7 @@ module.exports = async () => {
     records.map(({ record_id, timestamp_cursor, position }) =>
       insertZapRadio({
         record_id,
-        timestamp_cursor: timestamp_cursor.format(),
+        timestamp_cursor: timestamp_cursor.format('YYYY-MM-DD HH:mm:ss'),
         position,
         zap_id
       })
