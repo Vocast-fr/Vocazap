@@ -126,8 +126,6 @@ async function deleteFileByName (filename) {
   const files = await search(filename)
 
   if (files && files[0] && files[0].id) {
-    console.log(filename, files[0])
-
     const fileId = files[0].id
     await deleteFileById(fileId)
   }

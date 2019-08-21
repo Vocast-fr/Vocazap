@@ -111,8 +111,6 @@ async function saveRecord ({
     await insertRadioStreamsRecords(streamRecords)
   }
 
-  console.log({ streamRecords })
-
   return {
     radio,
     recordFile,
