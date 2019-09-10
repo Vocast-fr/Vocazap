@@ -1,6 +1,7 @@
 const fs = require('fs')
 const moment = require('moment-timezone')
 const os = require('os')
+const pLimit = require('p-limit')
 const request = require('superagent')
 
 const {
@@ -15,9 +16,15 @@ moment.locale('fr')
 function recordStream ({ radio, day, timestamp, fileDate, deadline }) {
   const { name, stream_url } = radio
   return new Promise(resolve => {
-    const recordName = `${name}@${fileDate}`
-    const recordFile = `${recordName}.mp3`
-    const tmpStreamPath = `${os.tmpdir()}/${recordFile}`
+    const recordFile = `${name}@${fileDate}.mp3`
+
+    const lastHourType =
+      moment(timestamp).hour() % 2 === 1 ? 'lastOddHour' : 'lastEvenHour'
+    const tmpRecordsFolder = `${os.tmpdir()}/livepiges`
+    if (!fs.existsSync(tmpRecordsFolder)) {
+      fs.mkdirSync(tmpRecordsFolder)
+    }
+    const tmpStreamPath = `${tmpRecordsFolder}/${name}@${lastHourType}`
     const stream = fs.createWriteStream(tmpStreamPath)
 
     let error = null
@@ -70,16 +77,19 @@ function recordStream ({ radio, day, timestamp, fileDate, deadline }) {
   })
 }
 
-async function saveRecord ({
-  radio,
-  recordFile,
-  day,
-  timestamp,
-  fileDate,
-  tmpStreamPath,
-  success,
-  error
-}) {
+async function saveRecord (
+  {
+    radio,
+    recordFile,
+    day,
+    timestamp,
+    fileDate,
+    tmpStreamPath,
+    success,
+    error
+  },
+  saveToDb = true
+) {
   const streamRecords = []
   const { id, name } = radio
   if (success) {
@@ -87,7 +97,8 @@ async function saveRecord ({
       const { record_url, record_path } = await uploadFile(
         'record',
         tmpStreamPath,
-        `${name}/${day}/`
+        `${name}/${day}/`,
+        recordFile
       )
 
       streamRecords.push({
@@ -107,9 +118,11 @@ async function saveRecord ({
   }
   */
 
-  if (streamRecords.length) {
+  if (streamRecords.length && saveToDb) {
     await insertRadioStreamsRecords(streamRecords)
   }
+
+  // console.log('end saveRec', streamRecords.length && saveToDb, streamRecords)
 
   return {
     radio,
@@ -120,7 +133,7 @@ async function saveRecord ({
   }
 }
 
-module.exports = async (deadline = 60000 * 60) => {
+module.exports = async (deadline = 60000 * 60, saveToDb = true) => {
   // load during one hour by default
 
   console.log(`${new Date().toJSON()} Stream record unit process start`)
@@ -138,17 +151,23 @@ module.exports = async (deadline = 60000 * 60) => {
     )
   )
 
-  for (let recordResult of allRecordsResults) {
-    try {
-      await saveRecord(recordResult)
-    } catch (e) {
-      console.error('Error uploading ', recordResult, e)
-    }
+  const limit = pLimit(3)
+  const savePromises = allRecordsResults.map(recordResult =>
+    limit(() =>
+      saveRecord(recordResult, saveToDb).catch(e =>
+        console.error(`Error uploading ${recordResult} : ${e}`)
+      )
+    )
+  )
+  try {
+    await Promise.all(savePromises)
+  } catch (e) {
+    console.error(`streamRecording::save:: Error uploading all results`)
   }
 
   for (let { tmpStreamPath } of allRecordsResults) {
     try {
-      fs.unlinkSync(tmpStreamPath)
+      // fs.unlinkSync(tmpStreamPath)
     } catch (e) {
       console.error('Error unlinking ', tmpStreamPath, e)
     }

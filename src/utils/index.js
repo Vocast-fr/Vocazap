@@ -5,7 +5,6 @@ const mysql = require('./mysql')
 const polly = require('./polly')
 const random = require('./random')
 const s3 = require('./s3')
-const xml = require('./xml')
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -17,6 +16,5 @@ module.exports = {
   ...mysql,
   ...polly,
   ...random,
-  ...s3,
-  ...xml
+  ...s3
 }

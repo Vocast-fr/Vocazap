@@ -25,7 +25,7 @@ async function ffmpegExtract (input, startSec, durationSec) {
       .output(output)
       .on('end', () => resolve(output))
       .on('error', err => {
-        console.error('ffmpeg error::', err)
+        console.error(`ffmpeg error::  ${err}`)
         reject(err)
       })
       .run()

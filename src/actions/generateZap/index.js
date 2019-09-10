@@ -92,7 +92,13 @@ async function mergeAllExtracts (records) {
 
   const normalizedExtractPaths = extractPaths
 
-  const mergedFile = await mergeMedias(normalizedExtractPaths)
+  let mergedFile
+
+  try {
+    mergedFile = await mergeMedias(normalizedExtractPaths)
+  } catch (e) {
+    mergedFile = false
+  }
 
   await Promise.all(
     [...extractPaths, ...normalizedExtractPaths].map(p =>
@@ -113,25 +119,28 @@ module.exports = async () => {
 
   const normalizedMergedFile = await mergeAllExtracts(records)
 
-  const { zap_url, zap_path } = await uploadFile(
-    'zap',
-    normalizedMergedFile,
-    `${moment().format('YY-MM-DD')}/`
-  )
-
-  const [zap_id] = await insertZap({ zap_path, zap_url })
-  await Promise.all(
-    records.map(({ record_id, timestamp_cursor, position }) =>
-      insertZapRadio({
-        record_id,
-        timestamp_cursor: timestamp_cursor.format('YYYY-MM-DD HH:mm:ss'),
-        position,
-        zap_id
-      })
+  if (normalizedMergedFile) {
+    const { zap_url, zap_path } = await uploadFile(
+      'zap',
+      normalizedMergedFile,
+      `${moment().format('YY-MM-DD')}/`
     )
-  )
 
-  fs.removeSync(normalizedMergedFile)
+    const [zap_id] = await insertZap({ zap_path, zap_url })
+    await Promise.all(
+      records.map(({ record_id, timestamp_cursor, position }) =>
+        insertZapRadio({
+          record_id,
+          timestamp_cursor: timestamp_cursor.format('YYYY-MM-DD HH:mm:ss'),
+          position,
+          zap_id
+        })
+      )
+    )
 
-  console.log('End zap generation', zap_url)
+    fs.removeSync(normalizedMergedFile)
+    console.log('End zap generation', zap_url)
+  } else {
+    console.log('Zap error on merge, no zap file')
+  }
 }

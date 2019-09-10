@@ -15,7 +15,7 @@ async function removeOldRadioStreams () {
         await deleteFile(record_url)
         await deleteSpecificStreamRecord(id)
       } catch (e) {
-        console.error(`Cannot delete stream record ${record_url}`, e)
+        console.error(`Cannot delete stream record ${record_url} : ${e}`)
       }
     }
 
@@ -34,7 +34,7 @@ async function removeOldZaps () {
         await deleteFile(zap_url)
         await deleteSpecificZap(id)
       } catch (e) {
-        console.error(`Cannot delete zap ${zap_url}`, e)
+        console.error(`Cannot delete zap ${zap_url} : ${e}`)
       }
     }
 

@@ -46,10 +46,12 @@ function getFile (filepath, url) {
 
 // type = record or zap
 // STORAGE_MODE === 'drive' or 'gstorage'
-async function uploadFile (type, filepath, foldersPath = '') {
+async function uploadFile (type, filepath, foldersPath = '', recordFile) {
   const result = {}
 
-  const recordFile = filepath.split('/').pop()
+  if (!recordFile) {
+    recordFile = filepath.split('/').pop()
+  }
 
   const mainFolderValue =
     `${STORAGE_MODE.toUpperCase()}` + '_' + type.toUpperCase() + 'S_FOLDER'
