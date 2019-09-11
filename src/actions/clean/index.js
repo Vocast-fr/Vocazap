@@ -1,3 +1,6 @@
+const fs = require('fs')
+const os = require('os')
+
 const {
   deleteSpecificStreamRecord,
   deleteSpecificZap,
@@ -45,5 +48,10 @@ async function removeOldZaps () {
 }
 
 module.exports = async () => {
+  const path = `${os.tmpdir()}/`
+  const regex = /[.]mp3$/
+  fs.readdirSync(path)
+    .filter(f => regex.test(f))
+    .map(f => fs.unlinkSync(`${path}${f}`))
   await Promise.all([removeOldRadioStreams(), removeOldZaps()])
 }

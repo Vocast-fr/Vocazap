@@ -18,9 +18,11 @@ process.on('unhandledRejection ', err =>
 if (APP_ENV === 'test') {
   console.log('Testing...')
 
+  /*
   streamRecording(6000, false).catch(e =>
     console.error('Main error for stream recording', e)
   )
+  */
 
   // generateZap().catch(e => console.error('Main error for zap generation', e))
 
