@@ -115,11 +115,11 @@ module.exports = async () => {
   let records = await getRandomRecords(ZAP_RECORDS_NB * 2)
   records = take(uniqBy(records, 'name'), ZAP_RECORDS_NB)
 
-  await Promise.all(records.map(extractRecord))
+  try {
+    await Promise.all(records.map(extractRecord))
 
-  const normalizedMergedFile = await mergeAllExtracts(records)
+    const normalizedMergedFile = await mergeAllExtracts(records)
 
-  if (normalizedMergedFile) {
     const { zap_url, zap_path } = await uploadFile(
       'zap',
       normalizedMergedFile,
@@ -140,7 +140,7 @@ module.exports = async () => {
 
     fs.removeSync(normalizedMergedFile)
     console.log('End zap generation', zap_url)
-  } else {
-    console.log('Zap error on merge, no zap file')
+  } catch (e) {
+    console.log('Error on zap generation, no zap file')
   }
 }

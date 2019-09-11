@@ -24,7 +24,7 @@ function recordStream ({ radio, day, timestamp, fileDate, deadline }) {
     if (!fs.existsSync(tmpRecordsFolder)) {
       fs.mkdirSync(tmpRecordsFolder)
     }
-    const tmpStreamPath = `${tmpRecordsFolder}/${name}@${lastHourType}`
+    const tmpStreamPath = `${tmpRecordsFolder}/${name}@${lastHourType}.mp3`
     const stream = fs.createWriteStream(tmpStreamPath)
 
     let error = null
