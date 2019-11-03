@@ -25,19 +25,22 @@ moment.locale('fr')
 async function extractRecord (record, position) {
   const { id: record_id, timestamp, record_url } = record
 
+  const ext = record_url.split('.').pop()
+
   // cursor in the record selected randomly from 15 seconds to the 59th minute
   const max = APP_ENV === 'test' ? 5 : 59 * 60
   const min = APP_ENV === 'test' ? 1 : 15
   const cursorSec = Math.floor(Math.random() * (max - min + 1)) + min
 
-  const hourFilePath = randomNewTmpFileName('mp3')
+  const hourFilePath = randomNewTmpFileName(ext)
 
   await getFile(hourFilePath, record_url)
 
   const extractPath = await ffmpegExtract(
     hourFilePath,
     cursorSec,
-    ZAP_RECORD_SECONDS
+    ZAP_RECORD_SECONDS,
+    ext
   )
 
   fs.removeSync(hourFilePath)

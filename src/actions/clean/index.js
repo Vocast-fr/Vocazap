@@ -49,7 +49,7 @@ async function removeOldZaps () {
 
 module.exports = async () => {
   const path = `${os.tmpdir()}/`
-  const regex = /[.]mp3$/
+  const regex = /([.]mp3)$|([.]aac)$/
   fs.readdirSync(path)
     .filter(f => regex.test(f))
     .map(f => fs.unlinkSync(`${path}${f}`))

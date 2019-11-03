@@ -15,9 +15,9 @@ ffmpeg.setFfprobePath(ffprobePath)
 
 const mergeFolder = randomNewTmpFileName('/')
 
-async function ffmpegExtract (input, startSec, durationSec) {
+async function ffmpegExtract (input, startSec, durationSec, ext = 'mp3') {
   return new Promise(async (resolve, reject) => {
-    const output = randomNewTmpFileName('mp3')
+    const output = randomNewTmpFileName(ext)
 
     ffmpeg(input)
       .setStartTime(startSec)

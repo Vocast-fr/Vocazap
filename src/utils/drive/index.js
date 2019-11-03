@@ -131,9 +131,6 @@ async function deleteFileByName (filename) {
   }
 }
 
-/**
- * filetype : 'audio/mpeg'
- */
 async function uploadFile (
   name,
   sourcePath,
@@ -171,7 +168,11 @@ async function uploadFile (
   })
 
   let ddlUrl = `https://drive.google.com/uc?id=${fileId}&authuser=0&export=download`
-  if (mimeType === 'audio/mpeg') ddlUrl += '.mp3'
+  if (mimeType.includes('audio/mpeg')) {
+    ddlUrl += '.mp3'
+  } else if (mimeType.includes('audio/aac')) {
+    ddlUrl += '.aac'
+  }
 
   //  `https://drive.google.com/open?id=${fileId}`
 

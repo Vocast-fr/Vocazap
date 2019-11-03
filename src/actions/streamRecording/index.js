@@ -14,9 +14,10 @@ const { uploadFile } = require('../../interfaces')
 moment.locale('fr')
 
 function recordStream ({ radio, day, timestamp, fileDate, deadline }) {
-  const { name, stream_url } = radio
+  const { name, stream_url, stream_content_type } = radio
   return new Promise(resolve => {
-    const recordFile = `${name}@${fileDate}.mp3`
+    const ext = stream_content_type.includes('audio/aac') ? 'aac' : 'mp3'
+    const recordFile = `${name}@${fileDate}.${ext}`
 
     const lastHourType =
       moment(timestamp).hour() % 2 === 1 ? 'lastOddHour' : 'lastEvenHour'
@@ -24,7 +25,7 @@ function recordStream ({ radio, day, timestamp, fileDate, deadline }) {
     if (!fs.existsSync(tmpRecordsFolder)) {
       fs.mkdirSync(tmpRecordsFolder)
     }
-    const tmpStreamPath = `${tmpRecordsFolder}/${name}@${lastHourType}.mp3`
+    const tmpStreamPath = `${tmpRecordsFolder}/${name}@${lastHourType}.${ext}`
     const stream = fs.createWriteStream(tmpStreamPath)
 
     let error = null
