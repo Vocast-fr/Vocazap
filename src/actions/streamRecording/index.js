@@ -136,22 +136,27 @@ async function saveRecord(
 
   if (streamRecords.length && saveToDb) {
     await insertRadioStreamsRecords(streamRecords)
-    await insertRadioStreamsInBQ([
-      {
-        origin,
-        record_url: recordUrl,
-        img,
-        stream_url,
-        radio_category,
-        id: new Date().valueOf(),
-        timestamp,
-        name,
-        record_path: recordPath,
-        active,
-        content_type: stream_content_type,
-        radio_id: id
-      }
-    ])
+
+    const row = {
+      origin,
+      record_url: recordUrl,
+      img,
+      stream_url,
+      radio_category,
+      id: new Date().valueOf(),
+      timestamp,
+      name,
+      record_path: recordPath,
+      active: Boolean(active),
+      content_type: stream_content_type,
+      radio_id: id
+    }
+
+    try {
+      await insertRadioStreamsInBQ([row])
+    } catch (e) {
+      console.error('Cannot insert in BQ', row, e)
+    }
   }
 
   // console.log('end saveRec', streamRecords.length && saveToDb, streamRecords)
