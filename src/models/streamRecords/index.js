@@ -4,9 +4,24 @@ const moment = require('moment')
 
 const { getKnexConnection } = require('../../utils/mysql')
 
-const { NB_DAYS_RECORDS_EXP, TABLE_STREAM_RECORDS, VIEW_RECORDS } = process.env
+const { BigQuery } = require('@google-cloud/bigquery')
 
-const _oldRadioStreamsOp = op => {
+const {
+  BQ_GC_PROJECT,
+  BQ_GC_KEYFILENAME,
+  BQ_RECORDS_DATASET,
+  BQ_RECORDS_TABLE,
+  NB_DAYS_RECORDS_EXP,
+  TABLE_STREAM_RECORDS,
+  VIEW_RECORDS
+} = process.env
+
+const bigquery = new BigQuery({
+  projectId: BQ_GC_PROJECT,
+  keyFilename: BQ_GC_KEYFILENAME
+})
+
+const _oldRadioStreamsOp = (op) => {
   const knexCon = getKnexConnection()
 
   return knexCon[op]()
@@ -22,7 +37,7 @@ const _oldRadioStreamsOp = op => {
 
 const delOldRadioStreams = () => _oldRadioStreamsOp('del')
 
-const deleteSpecificStreamRecord = id => {
+const deleteSpecificStreamRecord = (id) => {
   const knexCon = getKnexConnection()
 
   return knexCon['delete']()
@@ -32,22 +47,29 @@ const deleteSpecificStreamRecord = id => {
 
 const getOldRadioStreams = () => _oldRadioStreamsOp('select')
 
-const getRandomRecords = limit =>
+const getRandomRecords = (limit) =>
   getKnexConnection()
     .select()
     .from(VIEW_RECORDS)
     .orderByRaw('RAND()')
     .limit(limit)
 
-const insertRadioStreamsRecords = data =>
+const insertRadioStreamsRecords = (data) =>
   getKnexConnection()
     .insert(data)
     .table(TABLE_STREAM_RECORDS)
+
+const insertRadioStreamsInBQ = (rows) =>
+  bigquery
+    .dataset(BQ_RECORDS_DATASET)
+    .table(BQ_RECORDS_TABLE)
+    .insert(rows)
 
 module.exports = {
   deleteSpecificStreamRecord,
   delOldRadioStreams,
   getOldRadioStreams,
   getRandomRecords,
-  insertRadioStreamsRecords
+  insertRadioStreamsRecords,
+  insertRadioStreamsInBQ
 }

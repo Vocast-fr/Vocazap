@@ -2,7 +2,12 @@ const moment = require('moment')
 const fs = require('fs-extra')
 const { uniqBy, take } = require('lodash')
 
-const { getRandomRecords, insertZap, insertZapRadio } = require('../../models')
+const {
+  getRandomRecords,
+  insertZap,
+  insertZapRadio,
+  insertZapsInBQ
+} = require('../../models')
 
 const {
   // downloadStorageFile,
@@ -22,7 +27,7 @@ moment.locale('fr')
 /**
  * @description Get a piece of a record
  */
-async function extractRecord (record, position) {
+async function extractRecord(record, position) {
   const { id: record_id, timestamp, record_url } = record
 
   const ext = record_url.split('.').pop()
@@ -59,8 +64,8 @@ async function extractRecord (record, position) {
   return record
 }
 
-async function mergeAllExtracts (records) {
-  const allRadioNames = records.map(r => r.name)
+async function mergeAllExtracts(records) {
+  const allRadioNames = records.map((r) => r.name)
 
   const extractPaths = []
 
@@ -104,7 +109,7 @@ async function mergeAllExtracts (records) {
   }
 
   await Promise.all(
-    [...extractPaths, ...normalizedExtractPaths].map(p =>
+    [...extractPaths, ...normalizedExtractPaths].map((p) =>
       fs.remove(p).catch(console.error)
     )
   )
@@ -137,6 +142,42 @@ module.exports = async () => {
           timestamp_cursor: timestamp_cursor.format('YYYY-MM-DD HH:mm:ss'),
           position,
           zap_id
+        })
+      )
+    )
+
+    await insertZapsInBQ(
+      records.map(
+        ({
+          name,
+          stream_url,
+          content_type,
+          origin,
+          radio_category,
+          img,
+          active,
+          id,
+          radio_id,
+          record_url,
+          record_path,
+          timestamp,
+          updated_at,
+          position,
+          timestamp_cursor
+        }) => ({
+          created_date: new Date(),
+          record_url,
+          stream_url,
+          id: new Date().valueOf(),
+          timestamp,
+          position,
+          name,
+          zap_url,
+          zap_id,
+          zap_path,
+          record_id: id,
+          radio_id,
+          timestamp_cursor: timestamp_cursor.format('YYYY-MM-DD HH:mm:ss')
         })
       )
     )

@@ -6,16 +6,17 @@ const request = require('superagent')
 
 const {
   getAllActivatedRadios,
-  insertRadioStreamsRecords
+  insertRadioStreamsRecords,
+  insertRadioStreamsInBQ
 } = require('../../models')
 
 const { uploadFile } = require('../../interfaces')
 
 moment.locale('fr')
 
-function recordStream ({ radio, day, timestamp, fileDate, deadline }) {
+function recordStream({ radio, day, timestamp, fileDate, deadline }) {
   const { name, stream_url, stream_content_type } = radio
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const ext = stream_content_type.includes('audio/aac') ? 'aac' : 'mp3'
     const recordFile = `${name}@${fileDate}.${ext}`
 
@@ -44,7 +45,7 @@ function recordStream ({ radio, day, timestamp, fileDate, deadline }) {
       })
     })
 
-    stream.on('error', e => {
+    stream.on('error', (e) => {
       error = e
       console.error(`Stream errored`, {
         e,
@@ -60,11 +61,11 @@ function recordStream ({ radio, day, timestamp, fileDate, deadline }) {
       .timeout({
         deadline
       })
-      .on('end', end => {
+      .on('end', (end) => {
         stream.close()
         if (!success) console.error(`End request for ${recordFile}`)
       })
-      .on('error', e => {
+      .on('error', (e) => {
         success = e.timeout
 
         if (!success) {
@@ -78,7 +79,7 @@ function recordStream ({ radio, day, timestamp, fileDate, deadline }) {
   })
 }
 
-async function saveRecord (
+async function saveRecord(
   {
     radio,
     recordFile,
@@ -92,7 +93,18 @@ async function saveRecord (
   saveToDb = true
 ) {
   const streamRecords = []
-  const { id, name } = radio
+  const {
+    origin,
+    img,
+    stream_url,
+    radio_category,
+    id,
+    name,
+    active,
+    stream_content_type
+  } = radio
+  let recordUrl, recordPath
+
   if (success) {
     try {
       const { record_url, record_path } = await uploadFile(
@@ -101,6 +113,9 @@ async function saveRecord (
         `${name}/${day}/`,
         recordFile
       )
+
+      recordUrl = record_url
+      recordPath = record_path
 
       streamRecords.push({
         radio_id: id,
@@ -121,6 +136,22 @@ async function saveRecord (
 
   if (streamRecords.length && saveToDb) {
     await insertRadioStreamsRecords(streamRecords)
+    await insertRadioStreamsInBQ([
+      {
+        origin,
+        record_url: recordUrl,
+        img,
+        stream_url,
+        radio_category,
+        id: new Date().valueOf(),
+        timestamp,
+        name,
+        record_path: recordPath,
+        active,
+        content_type: stream_content_type,
+        radio_id: id
+      }
+    ])
   }
 
   // console.log('end saveRec', streamRecords.length && saveToDb, streamRecords)
@@ -134,7 +165,11 @@ async function saveRecord (
   }
 }
 
-module.exports = async (deadline = 60000 * 60, saveToDb = true) => {
+module.exports = async (
+  deadline = 60000 * 60,
+  saveToDb = true,
+  inputRadios
+) => {
   // load during one hour by default
 
   console.log(`${new Date().toJSON()} Stream record unit process start`)
@@ -144,18 +179,18 @@ module.exports = async (deadline = 60000 * 60, saveToDb = true) => {
   const timestamp = now.format('YYYY-MM-DD HH:00:00') // now.format()
   const fileDate = now.format('ddd YY-MM-DD HH')
 
-  const radios = await getAllActivatedRadios()
+  const radios = inputRadios || (await getAllActivatedRadios())
 
   const allRecordsResults = await Promise.all(
-    radios.map(radio =>
+    radios.map((radio) =>
       recordStream({ radio, day, timestamp, fileDate, deadline })
     )
   )
 
   const limit = pLimit(3)
-  const savePromises = allRecordsResults.map(recordResult =>
+  const savePromises = allRecordsResults.map((recordResult) =>
     limit(() =>
-      saveRecord(recordResult, saveToDb).catch(e =>
+      saveRecord(recordResult, saveToDb).catch((e) =>
         console.error(`Error uploading ${recordResult} : ${e}`)
       )
     )
