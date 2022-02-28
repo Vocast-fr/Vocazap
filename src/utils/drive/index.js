@@ -1,9 +1,10 @@
 require('dotenv').config()
 
-const { DRIVE_TOKEN_PATH, DRIVE_CREDENTIALS } = process.env
+const { DRIVE_TOKEN_PATH, DRIVE_CREDENTIALS, DDL_HOST } = process.env
 
 const fs = require('fs-extra')
 const readline = require('readline-sync')
+const os = require('os')
 
 const { google } = require('googleapis')
 // https://developers.google.com/drive/api/v3/quickstart/nodejs
@@ -21,7 +22,7 @@ const SCOPES = ['https://www.googleapis.com/auth/drive']
  * @param {google.auth.OAuth2} oAuth2Client The OAuth2 client to get token for.
  * @param {getEventsCallback} callback The callback for the authorized client.
  */
-async function getAccessToken (oAuth2Client) {
+async function getAccessToken(oAuth2Client) {
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: 'offline',
     scope: SCOPES
@@ -39,7 +40,7 @@ async function getAccessToken (oAuth2Client) {
   return token
 }
 
-async function getDriveSetUp () {
+async function getDriveSetUp() {
   // Load client secrets from a local file.
   const credentials = JSON.parse(fs.readFileSync(DRIVE_CREDENTIALS))
 
@@ -63,21 +64,47 @@ async function getDriveSetUp () {
   return google.drive({ version: 'v3', auth: oAuth2Client })
 }
 
+async function ddlProxy(fileId, fileName, res) {
+  const filePath = `${os.tmpdir()}/${fileName}`
+  const dest = fs.createWriteStream(filePath)
+
+  getDriveSetUp()
+    .then((drive) =>
+      drive.files.get({ fileId, alt: 'media' }, { responseType: 'stream' })
+    )
+    .then((driveResponse) => {
+      driveResponse.data
+        .on('end', () => {
+          res.download(filePath)
+        })
+        .on('error', (err) => {
+          //  console.error('Error downloading file.', err)
+          res.send(`Ddl file Error ${err}`)
+        })
+        .pipe(dest)
+    })
+    .catch((err) => {
+      // console.error('Main Error downloading file.', err)
+      res.send(`Main ddl file Error ${err}`)
+    })
+}
 /**
  * Lists the names and IDs of up to 10 files.
  */
-async function listFiles () {
+async function listFiles() {
   const drive = await getDriveSetUp()
   const {
     data: { files }
   } = await drive.files.list({
     pageSize: 10,
-    fields: 'nextPageToken, files(id, name)'
+    fields: 'nextPageToken, files(id, name)',
+    supportsAllDrives: true,
+    includeItemsFromAllDrives: true
   })
 
   if (files.length) {
     console.log('Files:')
-    files.map(file => {
+    files.map((file) => {
       console.log(`${file.name} (${file.id})`)
     })
   } else {
@@ -85,7 +112,7 @@ async function listFiles () {
   }
 }
 
-async function search (q) {
+async function search(q) {
   const drive = await getDriveSetUp()
 
   const {
@@ -94,13 +121,15 @@ async function search (q) {
     q,
     spaces: 'drive',
     pageToken: null,
-    fields: 'nextPageToken, files(id, name)'
+    fields: 'nextPageToken, files(id, name)',
+    supportsAllDrives: true,
+    includeItemsFromAllDrives: true
   })
 
   return files
 }
 
-async function createFolder (name, parentFolderId) {
+async function createFolder(name, parentFolderId) {
   const drive = await getDriveSetUp()
   const resource = {
     name,
@@ -109,20 +138,23 @@ async function createFolder (name, parentFolderId) {
   }
   const folder = await drive.files.create({
     resource,
-    fields: 'id'
+    fields: 'id',
+    supportsAllDrives: true
   })
+
   const folderId = folder.data.id
   return folderId
 }
 
-async function deleteFileById (fileId) {
+async function deleteFileById(fileId) {
   const drive = await getDriveSetUp()
   await drive.files.delete({
-    fileId
+    fileId,
+    supportsAllDrives: true
   })
 }
 
-async function deleteFileByName (filename) {
+async function deleteFileByName(filename) {
   const files = await search(filename)
 
   if (files && files[0] && files[0].id) {
@@ -131,7 +163,7 @@ async function deleteFileByName (filename) {
   }
 }
 
-async function uploadFile (
+async function uploadFile(
   name,
   sourcePath,
   mimeType = 'audio/mpeg',
@@ -156,30 +188,33 @@ async function uploadFile (
   const file = await drive.files.create({
     resource,
     media,
-    fields: 'id'
+    fields: 'id',
+    supportsAllDrives: true
   })
 
   const fileId = file.data.id
 
+  /*
   await drive.permissions.create({
     resource: permission,
     fileId,
     fields: 'id'
   })
-
+  
   let ddlUrl = `https://drive.google.com/uc?id=${fileId}&authuser=0&export=download`
   if (mimeType.includes('audio/mpeg')) {
     ddlUrl += '.mp3'
   } else if (mimeType.includes('audio/aac')) {
     ddlUrl += '.aac'
   }
-
   //  `https://drive.google.com/open?id=${fileId}`
+  */
 
+  const ddlUrl = `${DDL_HOST}/ddlPige?fileId=${fileId}&fileName=${name}`
   return ddlUrl
 }
 
-async function uploadFileAccordingPath (
+async function uploadFileAccordingPath(
   folderPath,
   fileName,
   sourcePath,
@@ -189,7 +224,7 @@ async function uploadFileAccordingPath (
     role: 'reader'
   }
 ) {
-  const folders = folderPath.split('/').filter(f => f)
+  const folders = folderPath.split('/').filter((f) => f)
 
   let folderId
 
@@ -220,6 +255,7 @@ async function uploadFileAccordingPath (
 }
 
 module.exports = {
+  ddlProxy,
   deleteFileById,
   deleteFileByName,
   getDriveSetUp,
