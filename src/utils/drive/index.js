@@ -65,7 +65,7 @@ async function getDriveSetUp() {
 }
 
 async function ddlProxy(fileId, fileName, res) {
-  const filePath = `${os.tmpdir()}/livepiges/${fileName}`
+  const filePath = `${os.tmpdir()}/livepiges/_${fileName}`
   const dest = fs.createWriteStream(filePath)
 
   getDriveSetUp()
