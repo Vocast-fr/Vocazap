@@ -75,7 +75,7 @@ async function ddlProxy(fileId, fileName, res) {
     .then((driveResponse) => {
       driveResponse.data
         .on('end', () => {
-          res.redirect(`${DDL_URL}/_${filePath}`)
+          res.redirect(`${DDL_URL}/_${fileName}`)
         })
         .on('error', (err) => {
           //  console.error('Error downloading file.', err)
