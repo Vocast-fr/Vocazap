@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { DRIVE_TOKEN_PATH, DRIVE_CREDENTIALS, DDL_HOST } = process.env
+const { DRIVE_TOKEN_PATH, DRIVE_CREDENTIALS, DDL_HOST, DDL_URL } = process.env
 
 const fs = require('fs-extra')
 const readline = require('readline-sync')
@@ -75,7 +75,7 @@ async function ddlProxy(fileId, fileName, res) {
     .then((driveResponse) => {
       driveResponse.data
         .on('end', () => {
-          res.download(filePath)
+          res.redirect(`${DDL_URL}/_${filePath}`)
         })
         .on('error', (err) => {
           //  console.error('Error downloading file.', err)

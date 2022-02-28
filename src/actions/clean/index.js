@@ -9,7 +9,7 @@ const {
 } = require('../../models')
 const { deleteFile } = require('../../interfaces')
 
-async function removeOldRadioStreams () {
+async function removeOldRadioStreams() {
   try {
     const oldRadiosStreams = await getOldRadioStreams()
 
@@ -28,7 +28,7 @@ async function removeOldRadioStreams () {
   }
 }
 
-async function removeOldZaps () {
+async function removeOldZaps() {
   try {
     const oldZaps = await getOldZaps()
 
@@ -48,10 +48,16 @@ async function removeOldZaps () {
 }
 
 module.exports = async () => {
-  const path = `${os.tmpdir()}/`
-  const regex = /([.]mp3)$|([.]aac)$/
+  let path = `${os.tmpdir()}/`
+  let regex = /([.]mp3)$|([.]aac)$/
   fs.readdirSync(path)
-    .filter(f => regex.test(f))
-    .map(f => fs.unlinkSync(`${path}${f}`))
+    .filter((f) => regex.test(f))
+    .map((f) => fs.unlinkSync(`${path}${f}`))
+
+  path = `${os.tmpdir()}/livepiges/`
+  regex = /_.*([.]mp3)$|([.]aac)$/
+  fs.readdirSync(path)
+    .filter((f) => regex.test(f))
+    .map((f) => fs.unlinkSync(`${path}${f}`))
   await Promise.all([removeOldRadioStreams(), removeOldZaps()])
 }
