@@ -59,9 +59,10 @@ module.exports = async () => {
     .map((f) => fs.unlinkSync(`${path}${f}`))
 
   path = `${SERVE_FOLDER}/`
-  regex = /_.*([.]mp3)$|([.]aac)$/
+  regex = /(_.*([.]mp3)$)|(_.*([.]aac))$/
   fs.readdirSync(path)
     .filter((f) => regex.test(f))
     .map((f) => fs.unlinkSync(`${path}${f}`))
+
   await Promise.all([removeOldRadioStreams(), removeOldZaps()])
 }
