@@ -47,7 +47,7 @@ if (APP_ENV === 'test') {
   )
 */
   // generateZap().catch(e => console.error('Main error for zap generation', e))
-  clean().catch((e) => console.error('Main error for clean', e))
+  // clean().catch((e) => console.error('Main error for clean', e))
 } else {
   cron.schedule('0 * * * *', () => {
     // 60000 = 1 min ||| 61 * 60000
