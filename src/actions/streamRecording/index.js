@@ -4,6 +4,10 @@ const os = require('os')
 const pLimit = require('p-limit')
 const request = require('superagent')
 
+require('dotenv').config()
+
+const { SERVE_FOLDER } = process.env
+
 const {
   getAllActivatedRadios,
   insertRadioStreamsRecords,
@@ -22,7 +26,7 @@ function recordStream({ radio, day, timestamp, fileDate, deadline }) {
 
     const lastHourType =
       moment(timestamp).hour() % 2 === 1 ? 'lastOddHour' : 'lastEvenHour'
-    const tmpRecordsFolder = `${os.tmpdir()}/livepiges`
+    const tmpRecordsFolder = SERVE_FOLDER
     if (!fs.existsSync(tmpRecordsFolder)) {
       fs.mkdirSync(tmpRecordsFolder)
     }

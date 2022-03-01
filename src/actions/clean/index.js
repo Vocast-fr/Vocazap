@@ -1,6 +1,10 @@
 const fs = require('fs')
 const os = require('os')
 
+require('dotenv').config()
+
+const { SERVE_FOLDER } = process.env
+
 const {
   deleteSpecificStreamRecord,
   deleteSpecificZap,
@@ -54,7 +58,7 @@ module.exports = async () => {
     .filter((f) => regex.test(f))
     .map((f) => fs.unlinkSync(`${path}${f}`))
 
-  path = `${os.tmpdir()}/livepiges/`
+  path = `${SERVE_FOLDER}/`
   regex = /_.*([.]mp3)$|([.]aac)$/
   fs.readdirSync(path)
     .filter((f) => regex.test(f))

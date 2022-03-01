@@ -1,6 +1,12 @@
 require('dotenv').config()
 
-const { DRIVE_TOKEN_PATH, DRIVE_CREDENTIALS, DDL_HOST, DDL_URL } = process.env
+const {
+  DRIVE_TOKEN_PATH,
+  DRIVE_CREDENTIALS,
+  DDL_HOST,
+  DDL_URL,
+  SERVE_FOLDER
+} = process.env
 
 const fs = require('fs-extra')
 const readline = require('readline-sync')
@@ -65,7 +71,7 @@ async function getDriveSetUp() {
 }
 
 async function ddlProxy(fileId, fileName, res) {
-  const filePath = `${os.tmpdir()}/livepiges/_${fileName}`
+  const filePath = `${SERVE_FOLDER}/_${fileName}`
   const dest = fs.createWriteStream(filePath)
 
   getDriveSetUp()
