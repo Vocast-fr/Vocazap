@@ -3,6 +3,7 @@ require('dotenv').config()
 const {
   DRIVE_TOKEN_PATH,
   DRIVE_CREDENTIALS,
+  DRIVE_ID,
   DDL_HOST,
   DDL_URL,
   SERVE_FOLDER
@@ -104,6 +105,8 @@ async function listFiles() {
   } = await drive.files.list({
     pageSize: 10,
     fields: 'nextPageToken, files(id, name)',
+    corpora: 'drive',
+    driveId: DRIVE_ID,
     supportsAllDrives: true,
     includeItemsFromAllDrives: true
   })
@@ -128,8 +131,10 @@ async function search(q) {
     spaces: 'drive',
     pageToken: null,
     fields: 'nextPageToken, files(id, name)',
-    supportsAllDrives: true,
-    includeItemsFromAllDrives: true
+    corpora: 'drive',
+    driveId: DRIVE_ID,
+    includeItemsFromAllDrives: true,
+    supportsAllDrives: true
   })
 
   return files

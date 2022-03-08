@@ -11,7 +11,7 @@ const clean = require('./src/actions/clean')
 const generateZap = require('./src/actions/generateZap')
 const streamRecording = require('./src/actions/streamRecording')
 
-const { ddlProxy } = require('./src/utils/drive')
+const { ddlProxy, search } = require('./src/utils/drive')
 
 const { APP_ENV, DEADLINE_RECORDS_MINUTES, DDL_HOST, PORT } = process.env
 
@@ -41,11 +41,10 @@ app.listen(PORT, function() {
 })
 
 if (APP_ENV === 'test') {
-  /*
   streamRecording(6000, false).catch((e) =>
     console.error('Main error for stream recording', e)
   )
-*/
+
   // generateZap().catch(e => console.error('Main error for zap generation', e))
   // clean().catch((e) => console.error('Main error for clean', e))
 } else {
