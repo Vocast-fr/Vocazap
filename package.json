@@ -18,7 +18,7 @@
     "googleapis": "^40.0.0",
     "knex": "^0.21.6",
     "lodash": "^4.17.20",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.31",
     "mysql": "^2.18.1",
     "node-cron": "^2.0.3",
