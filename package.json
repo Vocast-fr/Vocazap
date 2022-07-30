@@ -30,16 +30,15 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^5.16.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-promise": "^4.2.1",
+    "eslint": "^8.20.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-require-path-exists": "^1.1.9",
-    "eslint-plugin-requirejs": "^3.2.0",
-    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-requirejs": "^4.0.1",
     "eslint-standard": "^1.0.2",
-    "prettier-eslint": "^8.8.2"
+    "prettier-eslint": "^15.0.1"
   },
   "scripts": {
     "api": "node server.js",

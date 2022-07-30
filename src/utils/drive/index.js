@@ -29,7 +29,7 @@ const SCOPES = ['https://www.googleapis.com/auth/drive']
  * @param {google.auth.OAuth2} oAuth2Client The OAuth2 client to get token for.
  * @param {getEventsCallback} callback The callback for the authorized client.
  */
-async function getAccessToken(oAuth2Client) {
+async function getAccessToken (oAuth2Client) {
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: 'offline',
     scope: SCOPES
@@ -47,7 +47,7 @@ async function getAccessToken(oAuth2Client) {
   return token
 }
 
-async function getDriveSetUp() {
+async function getDriveSetUp () {
   // Load client secrets from a local file.
   const credentials = JSON.parse(fs.readFileSync(DRIVE_CREDENTIALS))
 
@@ -71,7 +71,7 @@ async function getDriveSetUp() {
   return google.drive({ version: 'v3', auth: oAuth2Client })
 }
 
-async function ddlProxy(fileId, fileName, res) {
+async function ddlProxy (fileId, fileName, res) {
   const filePath = `${SERVE_FOLDER}/_${fileName}`
   const dest = fs.createWriteStream(filePath)
 
@@ -98,7 +98,7 @@ async function ddlProxy(fileId, fileName, res) {
 /**
  * Lists the names and IDs of up to 10 files.
  */
-async function listFiles() {
+async function listFiles () {
   const drive = await getDriveSetUp()
   const {
     data: { files }
@@ -121,7 +121,7 @@ async function listFiles() {
   }
 }
 
-async function search(q) {
+async function search (q) {
   const drive = await getDriveSetUp()
 
   const {
@@ -134,13 +134,14 @@ async function search(q) {
     corpora: 'drive',
     driveId: DRIVE_ID,
     includeItemsFromAllDrives: true,
-    supportsAllDrives: true
+    supportsAllDrives: true,
+    pageSize: 1000
   })
 
   return files
 }
 
-async function createFolder(name, parentFolderId) {
+async function createFolder (name, parentFolderId) {
   const drive = await getDriveSetUp()
   const resource = {
     name,
@@ -157,7 +158,7 @@ async function createFolder(name, parentFolderId) {
   return folderId
 }
 
-async function deleteFileById(fileId) {
+async function deleteFileById (fileId) {
   const drive = await getDriveSetUp()
   await drive.files.delete({
     fileId,
@@ -165,7 +166,7 @@ async function deleteFileById(fileId) {
   })
 }
 
-async function deleteFileByName(filename) {
+async function deleteFileByName (filename) {
   const files = await search(filename)
 
   if (files && files[0] && files[0].id) {
@@ -174,7 +175,7 @@ async function deleteFileByName(filename) {
   }
 }
 
-async function uploadFile(
+async function uploadFile (
   name,
   sourcePath,
   mimeType = 'audio/mpeg',
@@ -211,7 +212,7 @@ async function uploadFile(
     fileId,
     fields: 'id'
   })
-  
+
   let ddlUrl = `https://drive.google.com/uc?id=${fileId}&authuser=0&export=download`
   if (mimeType.includes('audio/mpeg')) {
     ddlUrl += '.mp3'
@@ -225,7 +226,7 @@ async function uploadFile(
   return ddlUrl
 }
 
-async function uploadFileAccordingPath(
+async function uploadFileAccordingPath (
   folderPath,
   fileName,
   sourcePath,
@@ -239,11 +240,11 @@ async function uploadFileAccordingPath(
 
   let folderId
 
-  for (let folder of folders) {
+  for (const folder of folders) {
     let q = folderId ? `'${folderId}' in parents and ` : ''
     q +=
       `trashed=false and name='${folder}' ` +
-      `and mimeType='application/vnd.google-apps.folder'`
+      'and mimeType=\'application/vnd.google-apps.folder\''
 
     const files = await search(q)
 
