@@ -3,7 +3,8 @@ const os = require('os')
 
 require('dotenv').config()
 
-const { SERVE_FOLDER } = process.env
+const { SERVE_FOLDER, NB_DAYS_RECORDS_EXP } = process.env
+const moment = require('moment')
 
 const {
   deleteSpecificStreamRecord,
@@ -12,6 +13,30 @@ const {
   getOldZaps
 } = require('../../models')
 const { deleteFile } = require('../../interfaces')
+
+const { search, deleteFileById } = require('../../utils/drive')
+
+async function cleanOldFolders() {
+  try {
+    let nb = 0
+    const dayString = moment()
+      .subtract(NB_DAYS_RECORDS_EXP, 'd')
+      .format('YY-MM-DD')
+
+    const q = `trashed=false and name='${dayString}' and mimeType='application/vnd.google-apps.folder'`
+
+    const files = await search(q)
+    // console.log(files)
+
+    for (const { id } of files) {
+      await deleteFileById(id)
+      nb++
+    }
+    console.log(nb, ' old folders deleted')
+  } catch (e) {
+    console.error(`Cannot delete old folder : ${e}`)
+  }
+}
 
 async function removeOldRadioStreams() {
   try {
@@ -64,5 +89,9 @@ module.exports = async () => {
     .filter((f) => regex.test(f))
     .map((f) => fs.unlinkSync(`${path}${f}`))
 
-  await Promise.all([removeOldRadioStreams(), removeOldZaps()])
+  await Promise.all([
+    removeOldRadioStreams(),
+    removeOldZaps(),
+    cleanOldFolders()
+  ])
 }
