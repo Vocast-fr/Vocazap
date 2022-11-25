@@ -6,7 +6,7 @@ const request = require('superagent')
 
 require('dotenv').config()
 
-const { SERVE_FOLDER } = process.env
+const { SERVE_FOLDER, APP_ENV } = process.env
 
 const {
   getAllActivatedRadios,
@@ -14,7 +14,7 @@ const {
   insertRadioStreamsInBQ
 } = require('../../models')
 
-const { uploadFile } = require('../../interfaces')
+const { uploadFile } = require('../../utils')
 
 moment.locale('fr')
 
@@ -138,7 +138,7 @@ async function saveRecord(
   }
   */
 
-  if (streamRecords.length && saveToDb) {
+  if (streamRecords.length && saveToDb && APP_ENV !== 'test') {
     await insertRadioStreamsRecords(streamRecords)
 
     const row = {

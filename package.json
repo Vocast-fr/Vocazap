@@ -41,9 +41,8 @@
     "prettier-eslint": "^15.0.1"
   },
   "scripts": {
-    "api": "node server.js",
+    "production": "pm2 start app.js --log-date-format 'DD-MM-YY HH:mm:ss'",
     "app": "node app.js",
-    "renewGriveToken": "rm token.json && node renew-gdrive-token.js",
     "lint": "eslint .",
     "test": "mocha './{,!(node_modules)/**}/*.test.js' --exit"
   },

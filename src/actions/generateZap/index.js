@@ -18,7 +18,7 @@ const {
   textToVoice
 } = require('../../utils')
 
-const { getFile, uploadFile } = require('../../interfaces')
+const { getFile, uploadFile } = require('../../utils')
 
 const { APP_ENV, ZAP_RECORD_SECONDS, ZAP_RECORDS_NB } = process.env
 
