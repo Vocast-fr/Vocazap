@@ -8,22 +8,28 @@ async function deleteFile(url) {}
 
 function getFile(localPathFile, remoteUrl) {}
 
-async function uploadFile(type, filepath, foldersPath = '', recordFile) {
+async function uploadFile(type, filepath, foldersPath = '', filename) {
   const result = {}
 
-  if (!recordFile) {
-    recordFile = filepath.split('/').pop()
+  if (!filename) {
+    filename = filepath.split('/').pop()
   }
+
+  /* 
+  console.log({
+    buf: 'Basic ' + Buffer.from(':' + PIXELDRAIN_API_KEY).toString('base64'),
+    btoa: 'Basic ' + btoa(':' + PIXELDRAIN_API_KEY)
+  })
+  */
 
   const { text } = await request
     .post(`https://pixeldrain.com/api/file`)
     .set(
       'Authorization',
-      // 'Basic ' + Buffer.from(':' + PIXELDRAIN_API_KEY, 'base64')
-      'Basic ' + btoa(':' + PIXELDRAIN_API_KEY)
+      'Basic ' + Buffer.from(':' + PIXELDRAIN_API_KEY).toString('base64')
     )
     .attach('file', filepath)
-    .field('name', recordFile)
+    .field('name', filename)
 
   const { id } = JSON.parse(text)
 

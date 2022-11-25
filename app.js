@@ -35,6 +35,8 @@ if (APP_ENV === 'test') {
     clean().catch((e) => console.error('Main error for clean', e))
   })
 
+  console.log('Vocazap process started - production mode')
+
   /*
   cron.schedule('45 * * * *', () => {
     generateZap().catch((e) =>

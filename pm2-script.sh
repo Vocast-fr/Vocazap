@@ -1,0 +1,1 @@
+   pm2 start app.js --name 'vocazap' --log-date-format 'DD-MM-YY HH:mm:ss'
