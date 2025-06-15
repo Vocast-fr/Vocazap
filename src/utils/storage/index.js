@@ -1,46 +1,45 @@
-require('dotenv').config()
+require('dotenv').config();
 
-const request = require('superagent')
+const request = require('superagent');
 
-const { PIXELDRAIN_API_KEY } = process.env
+const { PIXELDRAIN_API_KEY } = process.env;
 
 async function deleteFile(url) {}
+
+let currentApiKeyIndex = 0;
+
+function getNextPixelDrainApiKey() {
+  const pixelDrainApiKeys = process.env.PIXELDRAIN_API_KEY.split(' ');
+  const key = pixelDrainApiKeys[currentApiKeyIndex];
+  currentApiKeyIndex = (currentApiKeyIndex + 1) % pixelDrainApiKeys.length;
+  return key;
+}
 
 function getFile(localPathFile, remoteUrl) {}
 
 async function uploadFile(type, filepath, foldersPath = '', filename) {
-  const result = {}
+  const result = {};
 
   if (!filename) {
-    filename = filepath.split('/').pop()
+    filename = filepath.split('/').pop();
   }
 
-  /* 
-  console.log({
-    buf: 'Basic ' + Buffer.from(':' + PIXELDRAIN_API_KEY).toString('base64'),
-    btoa: 'Basic ' + btoa(':' + PIXELDRAIN_API_KEY)
-  })
-  */
-
   const { text } = await request
-    .post(`https://pixeldrain.com/api/file`)
-    .set(
-      'Authorization',
-      'Basic ' + Buffer.from(':' + PIXELDRAIN_API_KEY).toString('base64')
-    )
+    .post('https://pixeldrain.com/api/file')
+    .set('Authorization', 'Basic ' + Buffer.from(':' + getNextPixelDrainApiKey()).toString('base64'))
     .attach('file', filepath)
-    .field('name', filename)
+    .field('name', filename);
 
-  const { id } = JSON.parse(text)
+  const { id } = JSON.parse(text);
 
-  result[`${type}_url`] = `https://pixeldrain.com/api/file/${id}?download`
-  result[`${type}_path`] = id
+  result[`${type}_url`] = `https://pixeldrain.com/api/file/${id}?download`;
+  result[`${type}_path`] = id;
 
-  return result
+  return result;
 }
 
 module.exports = {
   deleteFile,
   getFile,
-  uploadFile
-}
+  uploadFile,
+};
