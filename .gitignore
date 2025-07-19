@@ -68,3 +68,6 @@ dev-setup.sh
 **/*.key.json
 credentials.json
 token.json
+
+
+*.mp3
