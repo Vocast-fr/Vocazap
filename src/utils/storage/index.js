@@ -18,6 +18,9 @@ function getPixelDrainApiKey(offset = CURRENT_ACCOUNT_OFFSET) {
   const weekNumber = getWeekNumber();
   const apiKeyIndex = (weekNumber + offset) % pixelDrainApiKeys.length;
   const key = pixelDrainApiKeys[apiKeyIndex];
+
+  // console.log({ pixelDrainApiKeys, weekNumber, offset, apiKeyIndex, key });
+
   return key;
 }
 
@@ -26,23 +29,25 @@ async function deleteFile(url) {}
 function getFile(localPathFile, remoteUrl) {}
 
 async function deleteOldFiles() {
-  const headerAuthclean = 'Basic ' + Buffer.from(':' + getPixelDrainApiKey(CLEAN_ACCOUNT_OFFSET)).toString('base64');
+  for (let i = 0; i < PIXELDRAIN_API_KEYS.split(',').length; i++) {
+    const headerAuthclean = 'Basic ' + Buffer.from(':' + getPixelDrainApiKey(i)).toString('base64');
 
-  const { text } = await request.get('https://pixeldrain.com/api/user/files').set('Authorization', headerAuthclean);
-  const { files } = JSON.parse(text);
+    const { text } = await request.get('https://pixeldrain.com/api/user/files').set('Authorization', headerAuthclean);
+    const { files } = JSON.parse(text);
 
-  for (const { date_upload, id } of files) {
-    try {
-      const dateUpload = new Date(date_upload);
-      const currentDate = new Date();
-      const diffTime = Math.abs(currentDate - dateUpload);
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      if (diffDays > 30) {
-        await request.delete(`https://pixeldrain.com/api/file/${id}`).set('Authorization', headerAuthclean);
-        // console.log(`Deleted file with id ${id} uploaded on ${date_upload} (${diffDays} days old)`);
+    for (const { date_upload, id } of files) {
+      try {
+        const dateUpload = new Date(date_upload);
+        const currentDate = new Date();
+        const diffTime = Math.abs(currentDate - dateUpload);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        if (diffDays > 30) {
+          await request.delete(`https://pixeldrain.com/api/file/${id}`).set('Authorization', headerAuthclean);
+          // console.log(`Deleted file with id ${id} uploaded on ${date_upload} (${diffDays} days old)`);
+        }
+      } catch (error) {
+        console.error(`Error deleting file with id ${id}:`, error);
       }
-    } catch (error) {
-      console.error(`Error deleting file with id ${id}:`, error);
     }
   }
 }
