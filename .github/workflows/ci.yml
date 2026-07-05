@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [monorepo, master, main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Build (web + admin)
+        run: pnpm build
+        env:
+          PUBLIC_API_URL: https://api.piges.vocast.fr
+
+  # Le déploiement est géré par Coolify (webhook GitHub sur push) :
+  # rien à faire ici. Si vous préférez déclencher Coolify explicitement
+  # après la CI verte, décommentez et ajoutez le secret COOLIFY_WEBHOOK_URL.
+  #
+  # deploy:
+  #   needs: check
+  #   if: github.ref == 'refs/heads/monorepo'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Trigger Coolify deploy
+  #       run: curl -fsS -X GET "${{ secrets.COOLIFY_WEBHOOK_URL }}" -H "Authorization: Bearer ${{ secrets.COOLIFY_API_TOKEN }}"

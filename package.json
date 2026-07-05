@@ -1,67 +1,27 @@
 {
   "name": "vocazap",
-  "version": "1.0.0",
-  "description": "Vocast's project to record radios' streams and produce zappings - Process & API",
-  "main": "index.js",
-  "dependencies": {
-    "@ffmpeg-installer/ffmpeg": "^1.0.20",
-    "@ffprobe-installer/ffprobe": "^1.1.0",
-    "@google-cloud/bigquery": "^5.3.0",
-    "@google-cloud/storage": "^3.5.0",
-    "aws-sdk": "^2.771.0",
-    "body-parser": "^1.19.2",
-    "chance": "^1.1.7",
-    "dotenv": "^6.2.0",
-    "express": "^4.17.3",
-    "fluent-ffmpeg": "^2.1.2",
-    "fs-extra": "^7.0.1",
-    "googleapis": "^40.0.0",
-    "knex": "^0.21.6",
-    "lodash": "^4.17.20",
-    "moment": "^2.29.1",
-    "moment-timezone": "^0.5.31",
-    "mysql": "^2.18.1",
-    "node-cron": "^2.0.3",
-    "p-limit": "^2.3.0",
-    "querystring": "^0.2.1",
-    "readline-sync": "^1.4.10",
-    "superagent": "^4.1.0",
-    "url": "^0.11.0"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^8.20.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-require-path-exists": "^1.1.9",
-    "eslint-plugin-requirejs": "^4.0.1",
-    "eslint-standard": "^1.0.2",
-    "prettier-eslint": "^15.0.1"
+  "private": true,
+  "version": "2.0.0",
+  "description": "Les piges radio - Vocast : enregistrement heure par heure des radios françaises et bibliothèque d'écoute",
+  "license": "MIT",
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=22"
   },
   "scripts": {
-    "api": "node server.js",
-    "app": "node app.js",
-    "renewGriveToken": "rm token.json && node renew-gdrive-token.js",
-    "lint": "eslint .",
-    "test": "mocha './{,!(node_modules)/**}/*.test.js' --exit"
+    "dev:api": "pnpm --filter @vocazap/api dev",
+    "dev:recorder": "pnpm --filter @vocazap/recorder dev",
+    "dev:web": "pnpm --filter @vocazap/web dev",
+    "dev:admin": "pnpm --filter @vocazap/admin dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "db:generate": "pnpm --filter @vocazap/db generate",
+    "db:migrate": "pnpm --filter @vocazap/db migrate",
+    "db:seed": "pnpm --filter @vocazap/db seed",
+    "scrape:radios": "tsx scripts/scrape-fluxradios.mts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Vocast-fr/robozap.git"
-  },
-  "keywords": [
-    "vocast",
-    "radio",
-    "stream",
-    "innovation",
-    "podcast"
-  ],
-  "author": "Vocast",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Vocast-fr/robozap/issues"
-  },
-  "homepage": "https://github.com/Vocast-fr/robozap#readme"
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
 }

@@ -1,0 +1,1426 @@
+[
+  {
+    "name": "France Inter",
+    "streamUrl": "https://icecast.radiofrance.fr/franceinter-midfi.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.radiofrance.fr/franceinter",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiofrance.fr&sz=128"
+  },
+  {
+    "name": "franceinfo",
+    "streamUrl": "https://icecast.radiofrance.fr/franceinfo-midfi.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.francetvinfo.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francetvinfo.fr&sz=128"
+  },
+  {
+    "name": "France Culture",
+    "streamUrl": "https://icecast.radiofrance.fr/franceculture-midfi.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.radiofrance.fr/franceculture",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiofrance.fr&sz=128"
+  },
+  {
+    "name": "France Musique",
+    "streamUrl": "https://icecast.radiofrance.fr/francemusique-midfi.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.radiofrance.fr/francemusique",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiofrance.fr&sz=128"
+  },
+  {
+    "name": "FIP",
+    "streamUrl": "https://icecast.radiofrance.fr/fip-midfi.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.radiofrance.fr/fip",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiofrance.fr&sz=128"
+  },
+  {
+    "name": "Mouv'",
+    "streamUrl": "https://icecast.radiofrance.fr/mouv-midfi.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.radiofrance.fr/mouv",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiofrance.fr&sz=128"
+  },
+  {
+    "name": "RTL",
+    "streamUrl": "https://streaming.radio.rtl.fr/rtl-1-44-128",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.rtl.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.rtl.fr&sz=128"
+  },
+  {
+    "name": "RTL2",
+    "streamUrl": "https://streaming.radio.rtl2.fr/rtl2-1-44-128",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.rtl2.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.rtl2.fr&sz=128"
+  },
+  {
+    "name": "Fun Radio",
+    "streamUrl": "https://streaming.radio.funradio.fr/fun-1-44-128",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.funradio.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.funradio.fr&sz=128"
+  },
+  {
+    "name": "Europe 1",
+    "streamUrl": "https://europe1.lmn.fm/europe1.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.europe1.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.europe1.fr&sz=128"
+  },
+  {
+    "name": "Europe 2",
+    "streamUrl": "https://europe2.lmn.fm/europe2.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.europe2.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.europe2.fr&sz=128"
+  },
+  {
+    "name": "RFM",
+    "streamUrl": "https://rfm.lmn.fm/rfm.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.rfm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.rfm.fr&sz=128"
+  },
+  {
+    "name": "NRJ",
+    "streamUrl": "https://scdn.nrjaudio.fm/adwz1/fr/30001/mp3_128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.nrj.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.nrj.fr&sz=128"
+  },
+  {
+    "name": "Chérie FM",
+    "streamUrl": "https://scdn.nrjaudio.fm/adwz1/fr/30201/mp3_128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.cheriefm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.cheriefm.fr&sz=128"
+  },
+  {
+    "name": "Nostalgie",
+    "streamUrl": "https://scdn.nrjaudio.fm/adwz1/fr/30601/mp3_128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.nostalgie.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.nostalgie.fr&sz=128"
+  },
+  {
+    "name": "Rire & Chansons",
+    "streamUrl": "https://scdn.nrjaudio.fm/adwz1/fr/30401/mp3_128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.rireetchansons.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.rireetchansons.fr&sz=128"
+  },
+  {
+    "name": "RMC",
+    "streamUrl": "https://audio.bfmtv.com/rmcradio_128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://rmc.bfmtv.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=rmc.bfmtv.com&sz=128"
+  },
+  {
+    "name": "BFM Business",
+    "streamUrl": "https://audio.bfmtv.com/bfmbusiness_128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.bfmtv.com/economie",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.bfmtv.com&sz=128"
+  },
+  {
+    "name": "Skyrock",
+    "streamUrl": "https://icecast.skyrock.net/s/natio_mp3_128k",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://skyrock.fm",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=skyrock.fm&sz=128"
+  },
+  {
+    "name": "Radio Classique",
+    "streamUrl": "https://radioclassique.ice.infomaniak.ch/radioclassique-high.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.radioclassique.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radioclassique.fr&sz=128"
+  },
+  {
+    "name": "Radio Nova",
+    "streamUrl": "https://novazz.ice.infomaniak.ch/novazz-128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.nova.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.nova.fr&sz=128"
+  },
+  {
+    "name": "TSF Jazz",
+    "streamUrl": "https://tsfjazz.ice.infomaniak.ch/tsfjazz-high.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.tsfjazz.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.tsfjazz.com&sz=128"
+  },
+  {
+    "name": "Jazz Radio",
+    "streamUrl": "https://jazzradio.ice.infomaniak.ch/jazzradio-high.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://jazzradio.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=jazzradio.fr&sz=128"
+  },
+  {
+    "name": "Radio FG",
+    "streamUrl": "https://radiofg.impek.com/fg",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.radiofg.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiofg.com&sz=128"
+  },
+  {
+    "name": "Latina",
+    "streamUrl": "https://latina.ice.infomaniak.ch/latina-high.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.latina.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.latina.fr&sz=128"
+  },
+  {
+    "name": "M Radio",
+    "streamUrl": "https://mfm.ice.infomaniak.ch/mfm-128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.mradio.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.mradio.fr&sz=128"
+  },
+  {
+    "name": "Oüi FM",
+    "streamUrl": "https://ouifm.ice.infomaniak.ch/ouifm-high.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.ouifm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.ouifm.fr&sz=128"
+  },
+  {
+    "name": "Sud Radio",
+    "streamUrl": "https://start-sud.ice.infomaniak.ch/start-sud-high.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.sudradio.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.sudradio.fr&sz=128"
+  },
+  {
+    "name": "Beur FM",
+    "streamUrl": "https://broadcast.infomaniak.ch/beurfm-high.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.beurfm.net",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.beurfm.net&sz=128"
+  },
+  {
+    "name": "Africa Radio",
+    "streamUrl": "https://africa1paris.ice.infomaniak.ch/africa1paris-128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.africaradio.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.africaradio.com&sz=128"
+  },
+  {
+    "name": "Radio Orient",
+    "streamUrl": "https://radioorient.ice.infomaniak.ch/radioorient-high.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.radioorient.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radioorient.com&sz=128"
+  },
+  {
+    "name": "Radio Notre Dame",
+    "streamUrl": "https://radionotredame.ice.infomaniak.ch/radionotredame-128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://radionotredame.net",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=radionotredame.net&sz=128"
+  },
+  {
+    "name": "Radio Courtoisie",
+    "streamUrl": "https://radiocourtoisie.ice.infomaniak.ch/radiocourtoisie-128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.radiocourtoisie.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiocourtoisie.fr&sz=128"
+  },
+  {
+    "name": "Chante France",
+    "streamUrl": "https://chantefrance.ice.infomaniak.ch/chantefrance-128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.chantefrance.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.chantefrance.com&sz=128"
+  },
+  {
+    "name": "Générations",
+    "streamUrl": "https://generations.ice.infomaniak.ch/generations-high.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://generations.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=generations.fr&sz=128"
+  },
+  {
+    "name": "Voltage",
+    "streamUrl": "https://voltage.ice.infomaniak.ch/voltage-high.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.voltage.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.voltage.fr&sz=128"
+  },
+  {
+    "name": "Tropiques FM",
+    "streamUrl": "https://tropiquesfm.ice.infomaniak.ch/tropiquesfm-high.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.tropiquesfm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.tropiquesfm.fr&sz=128"
+  },
+  {
+    "name": "Radio Alfa",
+    "streamUrl": "https://radioalfa.ice.infomaniak.ch/radioalfa-128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://radioalfa.net",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=radioalfa.net&sz=128"
+  },
+  {
+    "name": "France Maghreb 2",
+    "streamUrl": "https://francemaghreb2.ice.infomaniak.ch/francemaghreb2-high.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.francemaghreb2.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francemaghreb2.fr&sz=128"
+  },
+  {
+    "name": "Radio Bonheur",
+    "streamUrl": "https://radiobonheur.ice.infomaniak.ch/radiobonheur-128.mp3",
+    "streamType": "mp3",
+    "category": "D",
+    "websiteUrl": "https://www.radiobonheur.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiobonheur.com&sz=128"
+  },
+  {
+    "name": "ici Alsace",
+    "streamUrl": "https://icecast.radiofrance.fr/fbalsace-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Armorique",
+    "streamUrl": "https://icecast.radiofrance.fr/fbarmorique-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Auxerre",
+    "streamUrl": "https://icecast.radiofrance.fr/fbauxerre-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Azur",
+    "streamUrl": "https://icecast.radiofrance.fr/fbazur-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Béarn Bigorre",
+    "streamUrl": "https://icecast.radiofrance.fr/fbbearn-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Belfort-Montbéliard",
+    "streamUrl": "https://icecast.radiofrance.fr/fbbelfortmontbeliard-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Berry",
+    "streamUrl": "https://icecast.radiofrance.fr/fbberry-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Besançon",
+    "streamUrl": "https://icecast.radiofrance.fr/fbbesancon-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Bourgogne",
+    "streamUrl": "https://icecast.radiofrance.fr/fbbourgogne-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Breizh Izel",
+    "streamUrl": "https://icecast.radiofrance.fr/fbbreizizel-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Champagne-Ardenne",
+    "streamUrl": "https://icecast.radiofrance.fr/fbchampagne-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Cotentin",
+    "streamUrl": "https://icecast.radiofrance.fr/fbcotentin-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Creuse",
+    "streamUrl": "https://icecast.radiofrance.fr/fbcreuse-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Drôme Ardèche",
+    "streamUrl": "https://icecast.radiofrance.fr/fbdromeardeche-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Gard Lozère",
+    "streamUrl": "https://icecast.radiofrance.fr/fbgardlozere-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Gascogne",
+    "streamUrl": "https://icecast.radiofrance.fr/fbgascogne-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Gironde",
+    "streamUrl": "https://icecast.radiofrance.fr/fbgironde-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Hérault",
+    "streamUrl": "https://icecast.radiofrance.fr/fbherault-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Isère",
+    "streamUrl": "https://icecast.radiofrance.fr/fbisere-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici La Rochelle",
+    "streamUrl": "https://icecast.radiofrance.fr/fblarochelle-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Limousin",
+    "streamUrl": "https://icecast.radiofrance.fr/fblimousin-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Loire Océan",
+    "streamUrl": "https://icecast.radiofrance.fr/fbloireocean-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Lorraine Nord",
+    "streamUrl": "https://icecast.radiofrance.fr/fblorrainenord-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Maine",
+    "streamUrl": "https://icecast.radiofrance.fr/fbmaine-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Mayenne",
+    "streamUrl": "https://icecast.radiofrance.fr/fbmayenne-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Nord",
+    "streamUrl": "https://icecast.radiofrance.fr/fbnord-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Normandie (Calvados - Orne)",
+    "streamUrl": "https://icecast.radiofrance.fr/fbbassenormandie-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Normandie (Seine-Maritime - Eure)",
+    "streamUrl": "https://icecast.radiofrance.fr/fbhautenormandie-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Orléans",
+    "streamUrl": "https://icecast.radiofrance.fr/fborleans-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Paris Île-de-France",
+    "streamUrl": "https://icecast.radiofrance.fr/fb1071-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Pays Basque",
+    "streamUrl": "https://icecast.radiofrance.fr/fbpaysbasque-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Pays d'Auvergne",
+    "streamUrl": "https://icecast.radiofrance.fr/fbpaysdauvergne-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Pays de Savoie",
+    "streamUrl": "https://icecast.radiofrance.fr/fbpaysdesavoie-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Périgord",
+    "streamUrl": "https://icecast.radiofrance.fr/fbperigord-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Picardie",
+    "streamUrl": "https://icecast.radiofrance.fr/fbpicardie-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Poitou",
+    "streamUrl": "https://icecast.radiofrance.fr/fbpoitou-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Provence",
+    "streamUrl": "https://icecast.radiofrance.fr/fbprovence-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici RCFM Frequenza Mora",
+    "streamUrl": "https://icecast.radiofrance.fr/fbfrequenzamora-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Roussillon",
+    "streamUrl": "https://icecast.radiofrance.fr/fbroussillon-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Saint-Étienne Loire",
+    "streamUrl": "https://icecast.radiofrance.fr/fbstetienne-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Sud Lorraine",
+    "streamUrl": "https://icecast.radiofrance.fr/fbsudlorraine-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Toulouse",
+    "streamUrl": "https://icecast.radiofrance.fr/fbtoulouse-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Touraine",
+    "streamUrl": "https://icecast.radiofrance.fr/fbtouraine-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "ici Vaucluse",
+    "streamUrl": "https://icecast.radiofrance.fr/fbvaucluse-midfi.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.francebleu.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.francebleu.fr&sz=128"
+  },
+  {
+    "name": "RCF",
+    "streamUrl": "https://rcf.streamakaci.com/rcf.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.rcf.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.rcf.fr&sz=128"
+  },
+  {
+    "name": "Ado FM",
+    "streamUrl": "https://adofm.ice.infomaniak.ch/adofm-high.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.adofm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.adofm.fr&sz=128"
+  },
+  {
+    "name": "Forum",
+    "streamUrl": "https://forum.ice.infomaniak.ch/forum-high.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.forum.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.forum.fr&sz=128"
+  },
+  {
+    "name": "Vibration",
+    "streamUrl": "https://vibration.ice.infomaniak.ch/vibration-high.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.vibration.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.vibration.fr&sz=128"
+  },
+  {
+    "name": "Wit FM",
+    "streamUrl": "https://witfm.ice.infomaniak.ch/witfm-high.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.witfm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.witfm.fr&sz=128"
+  },
+  {
+    "name": "Blackbox",
+    "streamUrl": "https://blackbox.ice.infomaniak.ch/blackbox-high.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.blackboxfm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.blackboxfm.fr&sz=128"
+  },
+  {
+    "name": "Swigg",
+    "streamUrl": "https://swigg.ice.infomaniak.ch/swigg-high.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.swigg.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.swigg.fr&sz=128"
+  },
+  {
+    "name": "Hit West",
+    "streamUrl": "https://hitwest.ice.infomaniak.ch/hitwest-global.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.hitwest.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.hitwest.com&sz=128"
+  },
+  {
+    "name": "Océane FM",
+    "streamUrl": "https://oceane.ice.infomaniak.ch/oceane-global.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.radio-oceane.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radio-oceane.com&sz=128"
+  },
+  {
+    "name": "Alouette",
+    "streamUrl": "https://alouette.ice.infomaniak.ch/alouette-high.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.alouette.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.alouette.fr&sz=128"
+  },
+  {
+    "name": "Tendance Ouest",
+    "streamUrl": "https://tendanceouest.ice.infomaniak.ch/tendanceouest-high.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.tendanceouest.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.tendanceouest.com&sz=128"
+  },
+  {
+    "name": "Sweet FM",
+    "streamUrl": "https://sweetfm.ice.infomaniak.ch/sweetfm-high.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.sweetfm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.sweetfm.fr&sz=128"
+  },
+  {
+    "name": "Contact FM",
+    "streamUrl": "https://radiocontact.ice.infomaniak.ch/radiocontact-high.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.mycontact.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.mycontact.fr&sz=128"
+  },
+  {
+    "name": "100% Radio",
+    "streamUrl": "https://100radio.ice.infomaniak.ch/100radio-high.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.100radio.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.100radio.fr&sz=128"
+  },
+  {
+    "name": "Totem",
+    "streamUrl": "https://totem.ice.infomaniak.ch/totem-high.mp3",
+    "streamType": "mp3",
+    "category": "C",
+    "websiteUrl": "https://www.radiototem.net",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiototem.net&sz=128"
+  },
+  {
+    "name": "Radio Scoop",
+    "streamUrl": "https://radioscoop.ice.infomaniak.ch/radioscoop-128.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.radioscoop.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radioscoop.com&sz=128"
+  },
+  {
+    "name": "Top Music",
+    "streamUrl": "https://topmusic.ice.infomaniak.ch/topmusic-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.topmusic.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.topmusic.fr&sz=128"
+  },
+  {
+    "name": "Radio 6",
+    "streamUrl": "https://radio6.ice.infomaniak.ch/radio6-128.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.radio6.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radio6.fr&sz=128"
+  },
+  {
+    "name": "Delta FM",
+    "streamUrl": "https://deltafm.ice.infomaniak.ch/deltafm-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.deltafm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.deltafm.fr&sz=128"
+  },
+  {
+    "name": "Horizon",
+    "streamUrl": "https://horizonradio.ice.infomaniak.ch/horizonradio-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.horizonradio.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.horizonradio.fr&sz=128"
+  },
+  {
+    "name": "Mona FM",
+    "streamUrl": "https://monafm.ice.infomaniak.ch/monafm-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.monafm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.monafm.fr&sz=128"
+  },
+  {
+    "name": "Champagne FM",
+    "streamUrl": "https://champagnefm.ice.infomaniak.ch/champagnefm-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.champagnefm.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.champagnefm.com&sz=128"
+  },
+  {
+    "name": "Magnum la Radio",
+    "streamUrl": "https://magnum.ice.infomaniak.ch/magnum-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.magnumlaradio.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.magnumlaradio.com&sz=128"
+  },
+  {
+    "name": "ODS Radio",
+    "streamUrl": "https://odsradio.ice.infomaniak.ch/odsradio-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.odsradio.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.odsradio.com&sz=128"
+  },
+  {
+    "name": "La Radio Plus",
+    "streamUrl": "https://laradioplus.ice.infomaniak.ch/laradioplus-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.laradioplus.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.laradioplus.com&sz=128"
+  },
+  {
+    "name": "Radio Mont Blanc",
+    "streamUrl": "https://radiomontblanc.ice.infomaniak.ch/radiomontblanc-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.radiomontblanc.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiomontblanc.fr&sz=128"
+  },
+  {
+    "name": "Kiss FM",
+    "streamUrl": "https://kissfm.ice.infomaniak.ch/kissfm-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.kissfm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.kissfm.fr&sz=128"
+  },
+  {
+    "name": "Maritima Radio",
+    "streamUrl": "https://maritima.ice.infomaniak.ch/maritima-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.maritima.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.maritima.fr&sz=128"
+  },
+  {
+    "name": "Radio Star",
+    "streamUrl": "https://radiostar.ice.infomaniak.ch/radiostar-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.radiostar.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiostar.fr&sz=128"
+  },
+  {
+    "name": "Evasion",
+    "streamUrl": "https://evasion.ice.infomaniak.ch/evasion-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.evasionfm.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.evasionfm.com&sz=128"
+  },
+  {
+    "name": "Oxygène Radio",
+    "streamUrl": "https://oxygene.ice.infomaniak.ch/oxygene-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.oxygeneradio.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.oxygeneradio.com&sz=128"
+  },
+  {
+    "name": "Radio Cristal",
+    "streamUrl": "https://radiocristal.ice.infomaniak.ch/radiocristal-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.radiocristal.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiocristal.fr&sz=128"
+  },
+  {
+    "name": "Radio Caroline",
+    "streamUrl": "https://radiocaroline.ice.infomaniak.ch/radiocaroline-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.radiocaroline.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiocaroline.fr&sz=128"
+  },
+  {
+    "name": "Bergerac 95",
+    "streamUrl": "https://bergerac95.ice.infomaniak.ch/bergerac95-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.bergerac95.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.bergerac95.fr&sz=128"
+  },
+  {
+    "name": "Radio Cactus",
+    "streamUrl": "https://radiocactus.ice.infomaniak.ch/radiocactus-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.radiocactus.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiocactus.fr&sz=128"
+  },
+  {
+    "name": "Radio Intensité",
+    "streamUrl": "https://intensite.ice.infomaniak.ch/intensite-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.intensite.net",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.intensite.net&sz=128"
+  },
+  {
+    "name": "Sea FM",
+    "streamUrl": "https://seafm.ice.infomaniak.ch/seafm-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.seafm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.seafm.fr&sz=128"
+  },
+  {
+    "name": "Radio Liberté",
+    "streamUrl": "https://radioliberte.ice.infomaniak.ch/radioliberte-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.radioliberte.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radioliberte.fr&sz=128"
+  },
+  {
+    "name": "Toulouse FM",
+    "streamUrl": "https://toulousefm.ice.infomaniak.ch/toulousefm-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.toulousefm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.toulousefm.fr&sz=128"
+  },
+  {
+    "name": "Radio Metropolys",
+    "streamUrl": "https://metropolys.ice.infomaniak.ch/metropolys-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.metropolys.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.metropolys.com&sz=128"
+  },
+  {
+    "name": "Flor FM",
+    "streamUrl": "https://florfm.ice.infomaniak.ch/florfm-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.florfm.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.florfm.com&sz=128"
+  },
+  {
+    "name": "Radio Menergy",
+    "streamUrl": "https://menergy.ice.infomaniak.ch/menergy-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.radiomenergy.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiomenergy.fr&sz=128"
+  },
+  {
+    "name": "Impact FM",
+    "streamUrl": "https://impactfm.ice.infomaniak.ch/impactfm-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.impactfm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.impactfm.fr&sz=128"
+  },
+  {
+    "name": "Radio Espace",
+    "streamUrl": "https://radioespace.ice.infomaniak.ch/radioespace-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.radioespace.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radioespace.com&sz=128"
+  },
+  {
+    "name": "Alpes 1",
+    "streamUrl": "https://alpes1.ice.infomaniak.ch/alpes1-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://alpes1.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=alpes1.com&sz=128"
+  },
+  {
+    "name": "Alpine Radio",
+    "streamUrl": "https://alpineradio.ice.infomaniak.ch/alpineradio-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.alpineradio.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.alpineradio.fr&sz=128"
+  },
+  {
+    "name": "Durance FM",
+    "streamUrl": "https://durancefm.ice.infomaniak.ch/durancefm-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.durancefm.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.durancefm.com&sz=128"
+  },
+  {
+    "name": "Radio Nova Lyon",
+    "streamUrl": "https://novalyon.ice.infomaniak.ch/novalyon-128.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.nova.fr/radios/nova-lyon",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.nova.fr&sz=128"
+  },
+  {
+    "name": "Mistral FM",
+    "streamUrl": "https://mistralfm.ice.infomaniak.ch/mistralfm-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.mistralfm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.mistralfm.fr&sz=128"
+  },
+  {
+    "name": "Gold FM",
+    "streamUrl": "https://goldfm.ice.infomaniak.ch/goldfm-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.goldfm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.goldfm.fr&sz=128"
+  },
+  {
+    "name": "Radio Emeraude",
+    "streamUrl": "https://radioemeraude.ice.infomaniak.ch/radioemeraude-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.radio-emeraude.net",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radio-emeraude.net&sz=128"
+  },
+  {
+    "name": "Hit FM Corse",
+    "streamUrl": "https://hitfmcorse.ice.infomaniak.ch/hitfmcorse-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.hitfm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.hitfm.fr&sz=128"
+  },
+  {
+    "name": "Frequenza Nostra",
+    "streamUrl": "https://frequenzanostra.ice.infomaniak.ch/frequenzanostra-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.frequenzanostra.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.frequenzanostra.fr&sz=128"
+  },
+  {
+    "name": "Radio Balagne",
+    "streamUrl": "https://radiobalagne.ice.infomaniak.ch/radiobalagne-high.mp3",
+    "streamType": "mp3",
+    "category": "B",
+    "websiteUrl": "https://www.radiobalagne.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiobalagne.com&sz=128"
+  },
+  {
+    "name": "Radio Campus Paris",
+    "streamUrl": "https://stream.radiocampusparis.org/rcp.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://radiocampusparis.org",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=radiocampusparis.org&sz=128"
+  },
+  {
+    "name": "Radio Campus Lille",
+    "streamUrl": "https://stream.campuslille.com/lille.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.campuslille.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.campuslille.com&sz=128"
+  },
+  {
+    "name": "Radio Campus Bordeaux",
+    "streamUrl": "https://radiocampusbordeaux.ice.infomaniak.ch/radiocampusbordeaux-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiocampusbordeaux.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiocampusbordeaux.com&sz=128"
+  },
+  {
+    "name": "Radio Campus Toulouse",
+    "streamUrl": "https://radiocampustoulouse.ice.infomaniak.ch/radiocampustoulouse-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.campusfm.net",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.campusfm.net&sz=128"
+  },
+  {
+    "name": "Radio Campus Grenoble",
+    "streamUrl": "https://stream.radiocampusgrenoble.org/rcg.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.campusgrenoble.org",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.campusgrenoble.org&sz=128"
+  },
+  {
+    "name": "Radio Campus Dijon",
+    "streamUrl": "https://radiocampusdijon.ice.infomaniak.ch/radiocampusdijon-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiodijoncampus.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiodijoncampus.com&sz=128"
+  },
+  {
+    "name": "Radio Campus Angers",
+    "streamUrl": "https://radiocampusangers.ice.infomaniak.ch/radiocampusangers-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiocampusangers.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiocampusangers.com&sz=128"
+  },
+  {
+    "name": "Radio Campus Tours",
+    "streamUrl": "https://radiocampustours.ice.infomaniak.ch/radiocampustours-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiocampustours.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiocampustours.com&sz=128"
+  },
+  {
+    "name": "Radio Campus Amiens",
+    "streamUrl": "https://radiocampusamiens.ice.infomaniak.ch/radiocampusamiens-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiocampusamiens.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiocampusamiens.fr&sz=128"
+  },
+  {
+    "name": "Radio Campus Besançon",
+    "streamUrl": "https://radiocampusbesancon.ice.infomaniak.ch/radiocampusbesancon-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.campusbesancon.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.campusbesancon.fr&sz=128"
+  },
+  {
+    "name": "Radio Libertaire",
+    "streamUrl": "https://live.radio-libertaire.org:8080/radiolib.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radio-libertaire.org",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radio-libertaire.org&sz=128"
+  },
+  {
+    "name": "Fréquence Paris Plurielle",
+    "streamUrl": "https://stream.rfpp.net/rfpp.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://rfpp.net",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=rfpp.net&sz=128"
+  },
+  {
+    "name": "Cause Commune",
+    "streamUrl": "https://stream.cause-commune.fm/cause-commune.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://cause-commune.fm",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=cause-commune.fm&sz=128"
+  },
+  {
+    "name": "Aligre FM",
+    "streamUrl": "https://aligrefm.ice.infomaniak.ch/aligrefm-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://aligrefm.org",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=aligrefm.org&sz=128"
+  },
+  {
+    "name": "Fréquence Protestante",
+    "streamUrl": "https://frequenceprotestante.ice.infomaniak.ch/frequenceprotestante-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://frequenceprotestante.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=frequenceprotestante.com&sz=128"
+  },
+  {
+    "name": "IDFM Radio Enghien",
+    "streamUrl": "https://idfm98.ice.infomaniak.ch/idfm98-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.idfm98.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.idfm98.fr&sz=128"
+  },
+  {
+    "name": "Vivre FM",
+    "streamUrl": "https://vivrefm.ice.infomaniak.ch/vivrefm-high.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.vivrefm.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.vivrefm.com&sz=128"
+  },
+  {
+    "name": "Radio Grenouille",
+    "streamUrl": "https://live.radiogrenouille.com/live",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiogrenouille.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiogrenouille.com&sz=128"
+  },
+  {
+    "name": "Radio Galère",
+    "streamUrl": "https://radiogalere.ice.infomaniak.ch/radiogalere-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiogalere.org",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiogalere.org&sz=128"
+  },
+  {
+    "name": "Radio Gazelle",
+    "streamUrl": "https://radiogazelle.ice.infomaniak.ch/radiogazelle-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiogazelle.net",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiogazelle.net&sz=128"
+  },
+  {
+    "name": "Canal B",
+    "streamUrl": "https://stream.canalb.fr/canalb.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.canalb.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.canalb.fr&sz=128"
+  },
+  {
+    "name": "Radio Béton",
+    "streamUrl": "https://stream.radiobeton.com/radiobeton.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiobeton.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiobeton.com&sz=128"
+  },
+  {
+    "name": "Radio Dio",
+    "streamUrl": "https://stream.radiodio.org/radiodio.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiodio.org",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiodio.org&sz=128"
+  },
+  {
+    "name": "C'rock Radio",
+    "streamUrl": "https://crockradio.ice.infomaniak.ch/crockradio-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.crockradio.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.crockradio.com&sz=128"
+  },
+  {
+    "name": "Radio Canut",
+    "streamUrl": "https://stream.radiocanut.org/radiocanut.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://radiocanut.org",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=radiocanut.org&sz=128"
+  },
+  {
+    "name": "Radio Pluriel",
+    "streamUrl": "https://radiopluriel.ice.infomaniak.ch/radiopluriel-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://radiopluriel.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=radiopluriel.fr&sz=128"
+  },
+  {
+    "name": "Jet FM",
+    "streamUrl": "https://jetfm.ice.infomaniak.ch/jetfm-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.jetfm.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.jetfm.fr&sz=128"
+  },
+  {
+    "name": "Prun'",
+    "streamUrl": "https://str0.creacast.com/prun",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.prun.net",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.prun.net&sz=128"
+  },
+  {
+    "name": "Sun FM Nantes",
+    "streamUrl": "https://str0.creacast.com/sun1",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.lesonunique.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.lesonunique.com&sz=128"
+  },
+  {
+    "name": "Radio Primitive",
+    "streamUrl": "https://primitive.ice.infomaniak.ch/primitive-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radioprimitive.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radioprimitive.fr&sz=128"
+  },
+  {
+    "name": "Radio Déclic",
+    "streamUrl": "https://radiodeclic.ice.infomaniak.ch/radiodeclic-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiodeclic.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiodeclic.fr&sz=128"
+  },
+  {
+    "name": "Radio Graf'hit",
+    "streamUrl": "https://grafhit.ice.infomaniak.ch/grafhit-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://grafhit.net",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=grafhit.net&sz=128"
+  },
+  {
+    "name": "Radio Aviva",
+    "streamUrl": "https://radioaviva.ice.infomaniak.ch/radioaviva-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radioaviva.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radioaviva.com&sz=128"
+  },
+  {
+    "name": "Divergence FM",
+    "streamUrl": "https://divergencefm.ice.infomaniak.ch/divergencefm-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.divergence-fm.org",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.divergence-fm.org&sz=128"
+  },
+  {
+    "name": "Radio Clapas",
+    "streamUrl": "https://radioclapas.ice.infomaniak.ch/radioclapas-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radioclapas.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radioclapas.fr&sz=128"
+  },
+  {
+    "name": "Radio Larzac",
+    "streamUrl": "https://radiolarzac.ice.infomaniak.ch/radiolarzac-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiolarzac.org",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiolarzac.org&sz=128"
+  },
+  {
+    "name": "Radio Zinzine",
+    "streamUrl": "https://radiozinzine.ice.infomaniak.ch/radiozinzine-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiozinzine.org",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiozinzine.org&sz=128"
+  },
+  {
+    "name": "Radio Escapades",
+    "streamUrl": "https://radioescapades.ice.infomaniak.ch/radioescapades-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radioescapades.org",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radioescapades.org&sz=128"
+  },
+  {
+    "name": "RCV Lille",
+    "streamUrl": "https://rcv99fm.ice.infomaniak.ch/rcv99fm-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://rcv99fm.org",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=rcv99fm.org&sz=128"
+  },
+  {
+    "name": "Radio Mille Pattes",
+    "streamUrl": "https://radiomillepattes.ice.infomaniak.ch/radiomillepattes-128.mp3",
+    "streamType": "mp3",
+    "category": "A",
+    "websiteUrl": "https://www.radiomillepattes.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.radiomillepattes.com&sz=128"
+  }
+]

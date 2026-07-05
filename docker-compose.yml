@@ -1,0 +1,87 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: vocazap
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD requis}
+      POSTGRES_DB: vocazap
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vocazap"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://vocazap:${POSTGRES_PASSWORD}@db:5432/vocazap
+      PORT: 3000
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET requis}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?ADMIN_PASSWORD requis}
+      CORS_ORIGINS: ${CORS_ORIGINS:-}
+      AUTO_SEED: ${AUTO_SEED:-true}
+      TZ: Europe/Paris
+    ports:
+      - "3000:3000"
+
+  recorder:
+    build:
+      context: .
+      dockerfile: apps/recorder/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      api:
+        condition: service_started
+    environment:
+      DATABASE_URL: postgres://vocazap:${POSTGRES_PASSWORD}@db:5432/vocazap
+      PIXELDRAIN_API_KEYS: ${PIXELDRAIN_API_KEYS:?PIXELDRAIN_API_KEYS requis}
+      RETENTION_DAYS: ${RETENTION_DAYS:-30}
+      BUFFER_DIR: /data/buffer
+      UPLOAD_CONCURRENCY: ${UPLOAD_CONCURRENCY:-3}
+      TZ: Europe/Paris
+    volumes:
+      - buffer:/data/buffer
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      # URL de l'API vue du navigateur (publique) et du SSR (réseau interne)
+      PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:3000}
+      API_URL: http://api:3000
+      PUBLIC_WEB_URL: ${PUBLIC_WEB_URL:-http://localhost:3001}
+      PORT: 3000
+      TZ: Europe/Paris
+    ports:
+      - "3001:3000"
+
+  admin:
+    build:
+      context: .
+      dockerfile: apps/admin/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      API_URL: ${PUBLIC_API_URL:-http://localhost:3000}
+    ports:
+      - "3002:80"
+
+volumes:
+  db-data:
+  buffer:
