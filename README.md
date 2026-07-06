@@ -16,6 +16,8 @@ apps/
   web        React Router 7 (SSR) + Tailwind : piges.vocast.fr — player optimisé
              desktop/mobile, extraction d'extraits côté client, PWA, SEO
   admin      React SPA + nginx : gestion des radios, visibilité des flux en panne
+  mcp        Serveur MCP (stdio + HTTP) : donne aux agents IA l'accès aux radios
+             et aux piges (recherche, extraits, téléchargement pour speech-to-text)
 packages/
   db         Drizzle ORM + PostgreSQL (schéma, migrations, seed)
   shared     Types partagés
@@ -97,6 +99,7 @@ Coolify → **Sources** → *GitHub App* → suivre l'assistant (installer l'app
    - `web` → `https://piges.vocast.fr` (port 3000)
    - `api` → `https://api.piges.vocast.fr` (port 3000)
    - `admin` → `https://admin.piges.vocast.fr` (port 80)
+   - `mcp` → `https://mcp.piges.vocast.fr` (port 3003, pour les agents IA — voir section MCP)
 
    Créer les 3 enregistrements DNS `A` vers l'IP de l'instance ; Coolify obtient les certificats Let's Encrypt automatiquement.
 5. **Deploy**. Au premier boot : l'API applique les migrations et seed `data/radios.json`, le recorder démarre l'enregistrement de toutes les radios actives.
@@ -124,6 +127,34 @@ docker compose up -d --build
 ```
 
 Puis un reverse proxy (Caddy/Traefik) devant `web` (:3001), `api` (:3000) et `admin` (:3002).
+
+## Serveur MCP : parler aux piges depuis un agent IA
+
+`apps/mcp` expose le système aux agents (Claude Code, Claude Desktop, ou tout client MCP) avec 6 outils : `list_radios`, `get_radio`, `list_recordings`, `recordings_at_hour`, `get_clip_access`, `download_clip`.
+
+**Cas d'usage type** — « extraire le journal de 12h des généralistes et comparer les traitements » :
+
+```
+1. recordings_at_hour(date="2026-07-05", hour=12, category="D")   → 1 pige par radio nationale
+2. download_clip(recording_id, start_seconds=0, end_seconds=1200) → fichiers MP3 locaux
+3. L'agent transcrit (whisper, etc.) puis compare les journaux.
+```
+
+**Connexion locale (stdio)** — depuis un clone du repo :
+
+```bash
+claude mcp add piges-radio \
+  --env PIGES_API_URL=https://api.piges.vocast.fr \
+  -- pnpm --filter @vocazap/mcp start
+```
+
+**Connexion distante (HTTP streamable)** — une fois le service `mcp` déployé (voir compose) :
+
+```bash
+claude mcp add --transport http piges-radio https://mcp.piges.vocast.fr/mcp
+```
+
+Le service tourne sans état (`POST /mcp`, healthcheck `GET /health`, port 3003). `PIGES_API_URL` doit être l'URL **publique** de l'API : les URLs audio retournées aux agents doivent être joignables depuis leur machine. En déploiement Coolify, ajoutez le domaine `mcp.piges.vocast.fr` → service `mcp` (port 3003). L'extraction d'extraits se fait par plage d'octets (sans ré-encodage, précision ≈ 1 s), comme dans le player web ; `get_clip_access` fournit aussi une commande `ffmpeg -ss … -to …` pour une découpe exacte si ffmpeg est disponible côté agent.
 
 ## API principale
 

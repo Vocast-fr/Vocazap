@@ -11,15 +11,23 @@ const recordingsQuerySchema = z.object({
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/)
     .optional(),
+  hour: z.coerce.number().int().min(0).max(23).optional(),
+  category: z.string().min(1).max(2).optional(),
   page: z.coerce.number().int().min(1).default(1),
-  pageSize: z.coerce.number().int().min(1).max(200).default(50)
+  pageSize: z.coerce.number().int().min(1).max(300).default(50)
 })
 
-/** Bornes UTC d'un jour civil Europe/Paris, calculées côté SQL. */
-function parisDayRange(date: string) {
+/** Bornes UTC d'un jour civil (ou d'une heure précise) Europe/Paris, calculées côté SQL. */
+function parisRange(date: string, hour?: number) {
+  if (hour === undefined) {
+    return {
+      from: sql<Date>`(${date}::date::timestamp AT TIME ZONE 'Europe/Paris')`,
+      to: sql<Date>`((${date}::date + 1)::timestamp AT TIME ZONE 'Europe/Paris')`
+    }
+  }
   return {
-    from: sql<Date>`(${date}::date::timestamp AT TIME ZONE 'Europe/Paris')`,
-    to: sql<Date>`((${date}::date + 1)::timestamp AT TIME ZONE 'Europe/Paris')`
+    from: sql<Date>`((${date}::date::timestamp + make_interval(hours => ${hour}::int)) AT TIME ZONE 'Europe/Paris')`,
+    to: sql<Date>`((${date}::date::timestamp + make_interval(hours => ${hour}::int + 1)) AT TIME ZONE 'Europe/Paris')`
   }
 }
 
@@ -48,7 +56,7 @@ export function registerPublicRoutes(app: FastifyInstance, db: Db) {
   app.get('/api/recordings', async (req, reply) => {
     const parsed = recordingsQuerySchema.safeParse(req.query)
     if (!parsed.success) return reply.code(400).send({ error: parsed.error.flatten() })
-    const { radio: radioSlug, date, page, pageSize } = parsed.data
+    const { radio: radioSlug, date, hour, category, page, pageSize } = parsed.data
 
     let radioId: number | undefined
     if (radioSlug) {
@@ -57,10 +65,11 @@ export function registerPublicRoutes(app: FastifyInstance, db: Db) {
       radioId = radio.id
     }
 
-    const range = date ? parisDayRange(date) : null
+    const range = date ? parisRange(date, hour) : null
     const where = and(
       eq(recordings.status, 'uploaded'),
       radioId !== undefined ? eq(recordings.radioId, radioId) : undefined,
+      category ? eq(radios.category, category) : undefined,
       range ? gte(recordings.startedAt, range.from) : undefined,
       range ? lt(recordings.startedAt, range.to) : undefined
     )
@@ -74,7 +83,11 @@ export function registerPublicRoutes(app: FastifyInstance, db: Db) {
         .orderBy(desc(recordings.startedAt), asc(radios.name))
         .limit(pageSize)
         .offset((page - 1) * pageSize),
-      db.select({ n: count() }).from(recordings).where(where)
+      db
+        .select({ n: count() })
+        .from(recordings)
+        .innerJoin(radios, eq(radios.id, recordings.radioId))
+        .where(where)
     ])
 
     return {

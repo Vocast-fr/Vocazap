@@ -70,6 +70,22 @@ services:
     ports:
       - "3001:3000"
 
+  mcp:
+    build:
+      context: .
+      dockerfile: apps/mcp/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      # Le MCP interroge l'API par le réseau interne, mais renvoie aux agents
+      # des URLs audio publiques : PIGES_API_URL doit être l'URL publique
+      PIGES_API_URL: ${PUBLIC_API_URL:-http://localhost:3000}
+      PORT: 3003
+      MCP_TRANSPORT: http
+    ports:
+      - "3003:3003"
+
   admin:
     build:
       context: .
